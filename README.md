@@ -1,4 +1,4 @@
-# csci6221
+# CSCI6221
 Repository for Advanced Software Paradigms
 
 # Clojure Group!
