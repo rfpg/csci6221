@@ -15,9 +15,9 @@
 (defn valid-index? [index tasks]
   (and (>= index 0) (< index (count tasks))))
 
-(defn mark-complete [tasks task-index]
+(defn update-status [tasks task-index]
   (if (valid-index? task-index tasks)
-    (assoc-in tasks [task-index :completed] true)
+    (update-in tasks [task-index :completed] not)
     (do (println "Invalid task number.") tasks)))
 
 (defn remove-task [tasks task-index]
@@ -41,7 +41,7 @@
     (println "\nTo-Do List Application")
     (println "1. Add Task")
     (println "2. View Tasks")
-    (println "3. Mark Task as Complete")
+    (println "3. Update Task Status")
     (println "4. Remove Task")
     (println "5. Save and Exit")
     (print "Choose an option: ")
@@ -59,10 +59,10 @@
             (recur tasks))
 
         (= choice "3")
-        (do (print "Enter task number to mark complete: ")
+        (do (print "Enter task number to update status: ")
             (flush)
             (let [index (dec (Integer. (read-line)))]
-              (recur (mark-complete tasks index))))
+              (recur (update-status tasks index))))
 
         (= choice "4")
         (do (print "Enter task number to remove: ")
