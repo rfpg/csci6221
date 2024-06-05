@@ -1,53 +1,81 @@
 (ns todo-list.core
   (:require [reagent.core :as reagent]
-            [ajax.core :refer [GET POST DELETE PUT]]
-            [cljs.reader :refer [read-string]]))
+            [reagent.dom :as dom]
+            [ajax.core :refer [GET POST DELETE PUT]]))
 
 (defonce tasks (reagent/atom []))
+(defonce new-task (reagent/atom {:task "" :due-date "" :people ""}))
 
 (defn fetch-tasks []
   (GET "/tasks"
-    {:handler #(reset! tasks (read-string %))
-     :error-handler #(js/console.error "Failed to fetch tasks")}))
+    {:handler (fn [response]
+                (js/console.log "Tasks fetched:" response)
+                (reset! tasks (vec response)))
+     :error-handler #(js/console.error "Failed to fetch tasks" %)}))
 
-(defn add-task [task]
+(defn add-task []
   (POST "/tasks"
-    {:params {:task task}
-     :handler #(swap! tasks conj {:task task})
-     :error-handler #(js/console.error "Failed to add task")}))
+    {:params @new-task
+     :handler (fn [response]
+                (js/console.log "Task added:" response)
+                (fetch-tasks)
+                (reset! new-task {:task "" :due-date "" :people ""}))
+     :error-handler #(js/console.error "Failed to add task" %)}))
 
 (defn remove-task [task]
   (DELETE "/tasks"
     {:params {:task task}
-     :handler (fn []
-                (reset! tasks (remove (fn [t] (= (:task t) task)) @tasks)))
-     :error-handler #(js/console.error "Failed to remove task")}))
+     :handler (fn [response]
+                (js/console.log "Task removed:" response)
+                (fetch-tasks))
+     :error-handler #(js/console.error "Failed to remove task" %)}))
 
 (defn edit-task [old-task new-task]
   (PUT "/tasks"
     {:params {:old-task old-task :new-task new-task}
-     :handler (fn []
-                (reset! tasks (map (fn [t] (if (= (:task t) old-task) {:task new-task} t)) @tasks)))
-     :error-handler #(js/console.error "Failed to edit task")}))
+     :handler (fn [response]
+                (js/console.log "Task edited:" response)
+                (fetch-tasks))
+     :error-handler #(js/console.error "Failed to edit task" %)}))
+
+(defn task-form []
+  [:div.task-form
+   [:input {:type "text"
+            :placeholder "Task"
+            :value (:task @new-task)
+            :on-change #(swap! new-task assoc :task (-> % .-target .-value))}]
+   [:input {:type "date"
+            :value (:due-date @new-task)
+            :on-change #(swap! new-task assoc :due-date (-> % .-target .-value))}]
+   [:input {:type "text"
+            :placeholder "People"
+            :value (:people @new-task)
+            :on-change #(swap! new-task assoc :people (-> % .-target .-value))}]
+   [:button {:on-click add-task} "Add Task"]])
 
 (defn task-item [task]
-  [:div
+  [:div.task-item
    [:span (:task task)]
+   [:span (:due-date task)]
+   [:span (:people task)]
    [:button {:on-click #(remove-task (:task task))} "Remove"]
-   [:button {:on-click #(edit-task (:task task) (str (:task task) " (edited)"))} "Edit"]])
+   [:button {:on-click #(edit-task (:task task) "new-task-name")} "Edit"]])
 
 (defn task-list []
   [:div
+   [:h2 "Tasks"]
+   [task-form]
    (for [task @tasks]
-     ^{:key (:task task)} [task-item task])])
+     ^{:key (:task task)}
+     [task-item task])])
 
-(defn main-component []
-  [:div
-   [:h1 "Todo List"]
-   [:input {:type "text" :ref #(set! (.-value %) "")}]
-   [:button {:on-click #(add-task (.-value (.-input (reagent/dom-node %))))} "Add"]
-   [task-list]])
-
-(defn ^:export init []
+(defn mount-root []
   (fetch-tasks)
-  (reagent/render [main-component] (.getElementById js/document "app")))
+  (dom/render
+   [task-list]
+   (.getElementById js/document "app")))
+
+(defn init []
+  (mount-root))
+
+(init)

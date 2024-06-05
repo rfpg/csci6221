@@ -52,4 +52,4 @@ return ajax.interceptors.map__GT_ResponseFormat.call(null,new cljs.core.Persiste
 (ajax.ring.ring_response_format.cljs$lang$maxFixedArity = 1);
 
 
-//# sourceMappingURL=ring.js.map?rel=1717626494556
+//# sourceMappingURL=ring.js.map?rel=1717629076799

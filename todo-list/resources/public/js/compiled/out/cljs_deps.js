@@ -159,7 +159,9 @@ goog.addDependency("../reagent/impl/component.js", ['reagent.impl.component'], [
 goog.addDependency("../reagent/impl/input.js", ['reagent.impl.input'], ['reagent.impl.protocols', 'cljs.core', 'reagent.impl.batching', 'reagent.impl.component']);
 goog.addDependency("../reagent/impl/template.js", ['reagent.impl.template'], ['reagent.impl.util', 'reagent.impl.protocols', 'reagent.ratom', 'react', 'cljs.core', 'goog.object', 'reagent.impl.batching', 'reagent.impl.component', 'reagent.impl.input', 'reagent.debug', 'clojure.string']);
 goog.addDependency("../reagent/core.js", ['reagent.core'], ['reagent.impl.util', 'reagent.impl.protocols', 'reagent.ratom', 'react', 'cljs.core', 'reagent.impl.template', 'reagent.impl.batching', 'reagent.impl.component', 'reagent.debug']);
-goog.addDependency("../todo_list/core.js", ['todo_list.core'], ['ajax.core', 'reagent.core', 'cljs.core', 'cljs.reader']);
+goog.addDependency("../cljsjs/react-dom/development/react-dom.inc.js", ['react_dom', 'cljsjs.react.dom'], ['react'], {'foreign-lib': true});
+goog.addDependency("../reagent/dom.js", ['reagent.dom'], ['reagent.impl.util', 'reagent.impl.protocols', 'reagent.ratom', 'cljs.core', 'reagent.impl.template', 'reagent.impl.batching', 'reagent.impl.input', 'react_dom']);
+goog.addDependency("../todo_list/core.js", ['todo_list.core'], ['ajax.core', 'reagent.core', 'cljs.core', 'reagent.dom']);
 goog.addDependency("debug/logger.js", ['goog.debug.LogManager', 'goog.debug.Loggable', 'goog.debug.Logger', 'goog.debug.Logger.Level'], ['goog.debug', 'goog.log', 'goog.log.Level', 'goog.log.LogRecord', 'goog.log.Logger']);
 goog.addDependency("structs/simplepool.js", ['goog.structs.SimplePool'], ['goog.Disposable']);
 goog.addDependency("debug/tracer.js", ['goog.debug.StopTraceDetail', 'goog.debug.Trace'], ['goog.array', 'goog.asserts', 'goog.debug', 'goog.debug.Logger', 'goog.iter', 'goog.log', 'goog.structs.Map', 'goog.structs.SimplePool']);

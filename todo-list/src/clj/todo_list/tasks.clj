@@ -2,13 +2,11 @@
   (:require [clojure.edn :as edn]
             [clojure.java.io :as io]))
 
-(defonce tasks-file "tasks.edn")
+(def tasks-file "resources/tasks.edn")
 
 (defn read-tasks []
-  (if (.exists (io/file tasks-file))
-    (with-open [r (io/reader tasks-file)]
-      (edn/read r))
-    []))
+  (with-open [r (io/reader tasks-file)]
+    (edn/read r)))
 
 (defn write-tasks [tasks]
   (with-open [w (io/writer tasks-file)]
@@ -21,8 +19,8 @@
 
 (defn remove-task [task]
   (let [tasks (read-tasks)]
-    (write-tasks (remove #(= task %) tasks))))
+    (write-tasks (remove #(= (:task %) (:task task)) tasks))))
 
 (defn edit-task [old-task new-task]
   (let [tasks (read-tasks)]
-    (write-tasks (map #(if (= old-task %) new-task %) tasks))))
+    (write-tasks (map (fn [t] (if (= (:task t) (:task old-task)) new-task t)) tasks))))

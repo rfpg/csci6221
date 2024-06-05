@@ -9,7 +9,6 @@
                  [ring/ring-json "0.5.0"]
                  [ring/ring-core "1.9.4"]
                  [ring/ring-jetty-adapter "1.9.4"]
-                 [metosin/reitit "0.5.12"]
                  [cljsjs/react "17.0.2-0"]
                  [cljsjs/react-dom "17.0.2-0"]]
   :plugins [[lein-figwheel "0.5.20"]
@@ -30,4 +29,8 @@
                 :source-map-timestamp true}}}}
   :figwheel
   {:css-dirs ["resources/public/css"]}
-  :ring {:handler todo-list.handler/app})
+  :ring {:handler todo-list.handler/app}
+
+:profiles {:dev {:dependencies [[binaryage/devtools "0.9.10"]
+                                 [figwheel-sidecar "0.5.20"]]
+                  :source-paths ["src/dev"]}})

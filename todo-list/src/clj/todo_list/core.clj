@@ -1,81 +1,76 @@
 (ns todo-list.core
-  (:gen-class)
-  (:require [clojure.java.io :as io]
-            [clojure.edn :as edn]))
+  (:require [reagent.core :as reagent]
+            [ajax.core :refer [GET POST DELETE PUT]]
+            [cljs.reader :refer [read-string]]))
 
-(def task-file "tasks.edn")
+(defonce tasks (reagent/atom []))
 
-(defn add-task [tasks task]
-  (conj tasks task))
+(defn fetch-tasks []
+  (GET "/tasks"
+    {:handler #(reset! tasks (read-string %))
+     :error-handler #(js/console.error "Failed to fetch tasks")}))
 
-(defn view-tasks [tasks]
-  (doseq [[index task] (map-indexed vector tasks)]
-    (println (str (inc index) ". " (if (:completed task) "[x] " "[ ] ") (:task task)))))
+(defn add-task [task]
+  (POST "/tasks"
+    {:params task
+     :handler #(swap! tasks conj task)
+     :error-handler #(js/console.error "Failed to add task")}))
 
-(defn valid-index? [index tasks]
-  (and (>= index 0) (< index (count tasks))))
+(defn remove-task [task]
+  (DELETE "/tasks"
+    {:params task
+     :handler (fn []
+                (reset! tasks (remove (fn [t] (= (:task t) (:task task))) @tasks)))
+     :error-handler #(js/console.error "Failed to remove task")}))
 
-(defn update-status [tasks task-index]
-  (if (valid-index? task-index tasks)
-    (update-in tasks [task-index :completed] not)
-    (do (println "Invalid task number.") tasks)))
+(defn edit-task [old-task new-task]
+  (PUT "/tasks"
+    {:params {:old-task old-task :new-task new-task}
+     :handler (fn []
+                (reset! tasks (map (fn [t] (if (= (:task t) old-task) new-task t)) @tasks)))
+     :error-handler #(js/console.error "Failed to edit task")}))
 
-(defn remove-task [tasks task-index]
-  (if (valid-index? task-index tasks)
-    (vec (concat (subvec tasks 0 task-index) (subvec tasks (inc task-index))))
-    (do (println "Invalid task number.") tasks)))
+(defn task-item [task]
+  [:div.task
+   [:span (:task task)]
+   [:span "Due: " (:due-date task)]
+   [:span "Assigned to: " (clojure.string/join ", " (:people task))]
+   [:button {:on-click #(remove-task task)} "Remove"]
+   [:button {:on-click #(edit-task (:task task)
+                                   (assoc task :task (str (:task task) " (edited)")))} "Edit"]])
 
-(defn save-tasks [tasks]
-  (with-open [w (io/writer task-file)]
-    (binding [*out* w]
-      (prn tasks))))
+(defn column [status]
+  [:div.column
+   [:h2 status]
+   (for [task (filter #(= (:status %) status) @tasks)]
+     ^{:key (:task task)} [task-item task])])
 
-(defn load-tasks []
-  (if (.exists (io/file task-file))
-    (with-open [r (io/reader task-file)]
-      (edn/read (java.io.PushbackReader. r)))
-    []))
+(defn task-form []
+  (let [task (reagent/atom {:task "" :due-date "" :people [] :status "Todo"})]
+    (fn []
+      [:div
+       [:input {:type "text" :placeholder "Task" :value (:task @task)
+                :on-change #(swap! task assoc :task (-> % .-target .-value))}]
+       [:input {:type "date" :placeholder "Due Date" :value (:due-date @task)
+                :on-change #(swap! task assoc :due-date (-> % .-target .-value))}]
+       [:input {:type "text" :placeholder "Assign to (comma separated)" :value (clojure.string/join ", " (:people @task))
+                :on-change #(swap! task assoc :people (-> % .-target .-value (clojure.string/split #",\s*")))}]
+       [:select {:value (:status @task)
+                 :on-change #(swap! task assoc :status (-> % .-target .-value))}
+        [:option {:value "Todo"} "Todo"]
+        [:option {:value "In Progress"} "In Progress"]
+        [:option {:value "Done"} "Done"]]
+       [:button {:on-click #(add-task @task)} "Add Task"]])))
 
-(defn -main [& args]
-  (loop [tasks (load-tasks)]
-    (println "\nTo-Do List Application")
-    (println "1. Add Task")
-    (println "2. View Tasks")
-    (println "3. Update Task Status")
-    (println "4. Remove Task")
-    (println "5. Save and Exit")
-    (print "Choose an option: ")
-    (flush)
-    (let [choice (read-line)]
-      (cond
-        (= choice "1")
-        (do (print "Enter task: ")
-            (flush)
-            (let [task (read-line)]
-              (recur (add-task tasks {:task task :due-date nil :completed false}))))
+(defn main-component []
+  [:div
+   [:h1 "Kanban Task Manager"]
+   [task-form]
+   [:div.board
+    [column "Todo"]
+    [column "In Progress"]
+    [column "Done"]]])
 
-        (= choice "2")
-        (do (view-tasks tasks)
-            (recur tasks))
-
-        (= choice "3")
-        (do (print "Enter task number to update status: ")
-            (flush)
-            (let [index (dec (Integer. (read-line)))]
-              (recur (update-status tasks index))))
-
-        (= choice "4")
-        (do (print "Enter task number to remove: ")
-            (flush)
-            (let [index (dec (Integer. (read-line)))]
-              (recur (remove-task tasks index))))
-
-        (= choice "5")
-        (do (save-tasks tasks)
-            (println "Tasks saved. Exiting.")
-            (System/exit 0))
-
-        :else
-        (do (println "Invalid choice. Try again.")
-            (recur tasks))))))
-
+(defn ^:export init []
+  (fetch-tasks)
+  (reagent/render [main-component] (.getElementById js/document "app")))

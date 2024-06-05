@@ -1,1 +1,1 @@
-[{:task "maryam task", :completed false} {:task "read paper", :completed true} {:task "richy task", :completed false}]
+[{:task "Initial Task" :due-date "2024-06-30" :people ["Alice" "Bob"] :status "Todo"}]

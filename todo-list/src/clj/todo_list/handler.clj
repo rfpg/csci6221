@@ -3,7 +3,6 @@
             [compojure.route :as route]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [ring.util.response :as response]
-            [todo-list.tasks :as tasks]
             [ring.middleware.json :refer [wrap-json-body wrap-json-response]]
             [todo-list.tasks :refer [read-tasks write-tasks add-task remove-task edit-task]]))
 
@@ -11,11 +10,11 @@
   (GET "/" [] (response/resource-response "index.html" {:root "public"}))
   (GET "/tasks" [] (response/response (prn-str (read-tasks))))
   (POST "/tasks" {params :params}
-    (let [task (:task params)]
+    (let [task params]
       (add-task task)
       (response/response "Task added")))
   (DELETE "/tasks" {params :params}
-    (let [task (:task params)]
+    (let [task params]
       (remove-task task)
       (response/response "Task removed")))
   (PUT "/tasks" {params :params}
