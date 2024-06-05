@@ -1,10 +1,33 @@
 (defproject todo-list "0.1.0-SNAPSHOT"
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
-  :license {:name "EPL-2.0 OR GPL-2.0-or-later WITH Classpath-exception-2.0"
-            :url "https://www.eclipse.org/legal/epl-2.0/"}
-  :dependencies [[org.clojure/clojure "1.11.1"]]
-  :main ^:skip-aot todo-list.core
-  :target-path "target/%s"
-  :profiles {:uberjar {:aot :all
-                       :jvm-opts ["-Dclojure.compiler.direct-linking=true"]}})
+  :description "A simple TODO list application"
+  :dependencies [[org.clojure/clojure "1.10.1"]
+                 [org.clojure/clojurescript "1.10.844"]
+                 [reagent "1.1.0"]
+                 [cljs-ajax "0.8.1"]
+                 [compojure "1.6.2"]
+                 [ring/ring-defaults "0.3.2"]
+                 [ring/ring-json "0.5.0"]
+                 [ring/ring-core "1.9.4"]
+                 [ring/ring-jetty-adapter "1.9.4"]
+                 [metosin/reitit "0.5.12"]
+                 [cljsjs/react "17.0.2-0"]
+                 [cljsjs/react-dom "17.0.2-0"]]
+  :plugins [[lein-figwheel "0.5.20"]
+            [lein-cljsbuild "1.1.7"]
+            [lein-ring "0.12.5"]]
+  :source-paths ["src/clj" "src/cljs"]
+  :resource-paths ["resources"]
+  :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"]
+  :cljsbuild
+  {:builds
+   {:dev
+    {:source-paths ["src/cljs"]
+     :figwheel {:on-jsload "todo-list.core/on-js-reload"}
+     :compiler {:main todo-list.core
+                :asset-path "js/compiled/out"
+                :output-to "resources/public/js/compiled/todo_list.js"
+                :output-dir "resources/public/js/compiled/out"
+                :source-map-timestamp true}}}}
+  :figwheel
+  {:css-dirs ["resources/public/css"]}
+  :ring {:handler todo-list.handler/app})

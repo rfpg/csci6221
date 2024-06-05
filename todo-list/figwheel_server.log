@@ -1,0 +1,200 @@
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src"]...
+[31mFailed to compile build :dev from ["src"] in 0.135 seconds.[0m
+[36m----  Could not Analyze  src/todo_list/core.cljs  ----[0m
+
+  [1mNo such namespace: clojure.java.io, could not locate clojure/java/io.cljs, clojure/java/io.cljc, or JavaScript source providing "clojure.java.io" [0m
+
+[36m----  Analysis Error : Please see src/todo_list/core.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src"]...
+[31mFailed to compile build :dev from ["src"] in 0.116 seconds.[0m
+[36m----  Could not Analyze  src/todo_list/core.cljs  ----[0m
+
+  [1mNo such namespace: clojure.java.io, could not locate clojure/java/io.cljs, clojure/java/io.cljc, or JavaScript source providing "clojure.java.io" [0m
+
+[36m----  Analysis Error : Please see src/todo_list/core.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src"]...
+[31mFailed to compile build :dev from ["src"] in 0.116 seconds.[0m
+[36m----  Could not Analyze  src/todo_list/core.cljs  ----[0m
+
+  [1mNo such namespace: clojure.java.io, could not locate clojure/java/io.cljs, clojure/java/io.cljc, or JavaScript source providing "clojure.java.io" [0m
+
+[36m----  Analysis Error : Please see src/todo_list/core.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src"]...
+[31mFailed to compile build :dev from ["src"] in 0.296 seconds.[0m
+[36m----  Could not Analyze  resources/public/js/compiled/out/reagent/impl/component.cljs  ----[0m
+
+  [1mNo such namespace: react, could not locate react.cljs, react.cljc, or JavaScript source providing "react" [0m
+
+[36m----  Analysis Error : Please see resources/public/js/compiled/out/reagent/impl/component.cljs  ----[0m
+Notifying browser that CSS file changed: resources/public/css/style.css
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.122 seconds.[0m
+[36m----  Could not Analyze  resources/public/js/compiled/out/reagent/impl/component.cljs  ----[0m
+
+  [1mNo such namespace: react, could not locate react.cljs, react.cljc, or JavaScript source providing "react" [0m
+
+[36m----  Analysis Error : Please see resources/public/js/compiled/out/reagent/impl/component.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.113 seconds.[0m
+[36m----  Could not Analyze  resources/public/js/compiled/out/reagent/impl/component.cljs  ----[0m
+
+  [1mNo such namespace: react, could not locate react.cljs, react.cljc, or JavaScript source providing "react" [0m
+
+[36m----  Analysis Error : Please see resources/public/js/compiled/out/reagent/impl/component.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 0.25 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 0.195 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 0.248 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Notifying browser that CSS file changed: resources/public/css/style.css
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.136 seconds.[0m
+[36m----  Could not Analyze  src/cljs/todo_list/core.cljs  ----[0m
+
+  [1mNo such namespace: ajax.core, could not locate ajax/core.cljs, ajax/core.cljc, or JavaScript source providing "ajax.core" [0m
+
+[36m----  Analysis Error : Please see src/cljs/todo_list/core.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 0.259 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 0.276 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 0.252 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.171 seconds.[0m
+[36m----  Could not Analyze  src/cljs/todo_list/core.cljs  ----[0m
+
+  [1mNo such namespace: react, could not locate react.cljs, react.cljc, or JavaScript source providing "react" [0m
+
+[36m----  Analysis Error : Please see src/cljs/todo_list/core.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.154 seconds.[0m
+[36m----  Could not Analyze  src/cljs/todo_list/core.cljs  ----[0m
+
+  [1mNo such namespace: react, could not locate react.cljs, react.cljc, or JavaScript source providing "react" [0m
+
+[36m----  Analysis Error : Please see src/cljs/todo_list/core.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.123 seconds.[0m
+[36m----  Could not Analyze  src/cljs/todo_list/core.cljs  ----[0m
+
+  [1mNo such namespace: cljs-ajax.core, could not locate cljs_ajax/core.cljs, cljs_ajax/core.cljc, or JavaScript source providing "cljs-ajax.core" (Please check that namespaces with dashes use underscores in the ClojureScript file name) [0m
+
+[36m----  Analysis Error : Please see src/cljs/todo_list/core.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.129 seconds.[0m
+[36m----  Could not Analyze  src/cljs/todo_list/core.cljs  ----[0m
+
+  [1mNo such namespace: cljs-ajax.core, could not locate cljs_ajax/core.cljs, cljs_ajax/core.cljc, or JavaScript source providing "cljs-ajax.core" (Please check that namespaces with dashes use underscores in the ClojureScript file name) [0m
+
+[36m----  Analysis Error : Please see src/cljs/todo_list/core.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.141 seconds.[0m
+[36m----  Could not Analyze  src/cljs/todo_list/core.cljs  ----[0m
+
+  [1mNo such namespace: cljs-ajax.core, could not locate cljs_ajax/core.cljs, cljs_ajax/core.cljc, or JavaScript source providing "cljs-ajax.core" (Please check that namespaces with dashes use underscores in the ClojureScript file name) [0m
+
+[36m----  Analysis Error : Please see src/cljs/todo_list/core.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.123 seconds.[0m
+[36m----  Could not Analyze  src/cljs/todo_list/core.cljs  ----[0m
+
+  [1mNo such namespace: cljs-ajax.core, could not locate cljs_ajax/core.cljs, cljs_ajax/core.cljc, or JavaScript source providing "cljs-ajax.core" (Please check that namespaces with dashes use underscores in the ClojureScript file name) [0m
+
+[36m----  Analysis Error : Please see src/cljs/todo_list/core.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.126 seconds.[0m
+[36m----  Could not Analyze  src/cljs/todo_list/core.cljs  ----[0m
+
+  [1mNo such namespace: cljs-ajax.core, could not locate cljs_ajax/core.cljs, cljs_ajax/core.cljc, or JavaScript source providing "cljs-ajax.core" (Please check that namespaces with dashes use underscores in the ClojureScript file name) [0m
+
+[36m----  Analysis Error : Please see src/cljs/todo_list/core.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.136 seconds.[0m
+[36m----  Could not Analyze  src/cljs/todo_list/core.cljs  ----[0m
+
+  [1mNo such namespace: cljs-ajax.core, could not locate cljs_ajax/core.cljs, cljs_ajax/core.cljc, or JavaScript source providing "cljs-ajax.core" (Please check that namespaces with dashes use underscores in the ClojureScript file name) [0m
+
+[36m----  Analysis Error : Please see src/cljs/todo_list/core.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.131 seconds.[0m
+[36m----  Could not Analyze  src/cljs/todo_list/core.cljs  ----[0m
+
+  [1mNo such namespace: cljs-ajax.core, could not locate cljs_ajax/core.cljs, cljs_ajax/core.cljc, or JavaScript source providing "cljs-ajax.core" (Please check that namespaces with dashes use underscores in the ClojureScript file name) [0m
+
+[36m----  Analysis Error : Please see src/cljs/todo_list/core.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.147 seconds.[0m
+[36m----  Could not Analyze  resources/public/js/compiled/out/reagent/impl/component.cljs  ----[0m
+
+  [1mNo such namespace: react, could not locate react.cljs, react.cljc, or JavaScript source providing "react" [0m
+
+[36m----  Analysis Error : Please see resources/public/js/compiled/out/reagent/impl/component.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.173 seconds.[0m
+[36m----  Could not Analyze  src/cljs/todo_list/core.cljs  ----[0m
+
+  [1mNo such namespace: cljs-ajax.core, could not locate cljs_ajax/core.cljs, cljs_ajax/core.cljc, or JavaScript source providing "cljs-ajax.core" (Please check that namespaces with dashes use underscores in the ClojureScript file name) [0m
+
+[36m----  Analysis Error : Please see src/cljs/todo_list/core.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.146 seconds.[0m
+[36m----  Could not Analyze  src/cljs/todo_list/core.cljs  ----[0m
+
+  [1mNo such namespace: cljs-ajax.core, could not locate cljs_ajax/core.cljs, cljs_ajax/core.cljc, or JavaScript source providing "cljs-ajax.core" (Please check that namespaces with dashes use underscores in the ClojureScript file name) [0m
+
+[36m----  Analysis Error : Please see src/cljs/todo_list/core.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.124 seconds.[0m
+[36m----  Could not Analyze  resources/public/js/compiled/out/reagent/impl/component.cljs  ----[0m
+
+  [1mNo such namespace: react, could not locate react.cljs, react.cljc, or JavaScript source providing "react" [0m
+
+[36m----  Analysis Error : Please see resources/public/js/compiled/out/reagent/impl/component.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.115 seconds.[0m
+[36m----  Could not Analyze  resources/public/js/compiled/out/reagent/impl/component.cljs  ----[0m
+
+  [1mNo such namespace: react, could not locate react.cljs, react.cljc, or JavaScript source providing "react" [0m
+
+[36m----  Analysis Error : Please see resources/public/js/compiled/out/reagent/impl/component.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.422 seconds.[0m
+[36m----  Could not Analyze  resources/public/js/compiled/out/reagent/impl/component.cljs  ----[0m
+
+  [1mNo such namespace: react, could not locate react.cljs, react.cljc, or JavaScript source providing "react" [0m
+
+[36m----  Analysis Error : Please see resources/public/js/compiled/out/reagent/impl/component.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.147 seconds.[0m
+[36m----  Could not Analyze  resources/public/js/compiled/out/reagent/impl/component.cljs  ----[0m
+
+  [1mNo such namespace: react, could not locate react.cljs, react.cljc, or JavaScript source providing "react" [0m
+
+[36m----  Analysis Error : Please see resources/public/js/compiled/out/reagent/impl/component.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.156 seconds.[0m
+[36m----  Could not Analyze  resources/public/js/compiled/out/reagent/impl/component.cljs  ----[0m
+
+  [1mNo such namespace: react, could not locate react.cljs, react.cljc, or JavaScript source providing "react" [0m
+
+[36m----  Analysis Error : Please see resources/public/js/compiled/out/reagent/impl/component.cljs  ----[0m
