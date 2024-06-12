@@ -26,11 +26,16 @@
                 :asset-path "js/compiled/out"
                 :output-to "resources/public/js/compiled/todo_list.js"
                 :output-dir "resources/public/js/compiled/out"
+                :source-map true
+                :optimizations :none
+                :pretty-print true
                 :source-map-timestamp true}}}}
   :figwheel
   {:css-dirs ["resources/public/css"]}
   :ring {:handler todo-list.handler/app}
-
-:profiles {:dev {:dependencies [[binaryage/devtools "0.9.10"]
-                                 [figwheel-sidecar "0.5.20"]]
-                  :source-paths ["src/dev"]}})
+  :profiles {:dev {:dependencies [[binaryage/devtools "0.9.10"]
+                                  [figwheel-sidecar "0.5.20"]
+                                  [com.cemerick/piggieback "0.2.2"]]
+                   :source-paths ["src/dev"]
+                   :plugins [[lein-figwheel "0.5.20"]]
+                   :figwheel {:nrepl-port 7002}}})

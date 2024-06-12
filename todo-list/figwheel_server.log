@@ -215,3 +215,372 @@ Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/c
 notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
 notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
 notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 0.251 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.153 seconds.[0m
+[36m----  Could not Analyze  src/cljs/todo_list/core.cljs  ----[0m
+
+  [1mNo such namespace: react-beautiful-dnd, could not locate react_beautiful_dnd.cljs, react_beautiful_dnd.cljc, or JavaScript source providing "react-beautiful-dnd" (Please check that namespaces with dashes use underscores in the ClojureScript file name) [0m
+
+[36m----  Analysis Error : Please see src/cljs/todo_list/core.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.158 seconds.[0m
+[36m----  Could not Analyze  src/cljs/todo_list/core.cljs  ----[0m
+
+  [1mNo such namespace: react-beautiful-dnd, could not locate react_beautiful_dnd.cljs, react_beautiful_dnd.cljc, or JavaScript source providing "react-beautiful-dnd" (Please check that namespaces with dashes use underscores in the ClojureScript file name) [0m
+
+[36m----  Analysis Error : Please see src/cljs/todo_list/core.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.149 seconds.[0m
+[36m----  Could not Analyze  src/cljs/todo_list/core.cljs  ----[0m
+
+  [1mNo such namespace: react-beautiful-dnd, could not locate react_beautiful_dnd.cljs, react_beautiful_dnd.cljc, or JavaScript source providing "react-beautiful-dnd" (Please check that namespaces with dashes use underscores in the ClojureScript file name) [0m
+
+[36m----  Analysis Error : Please see src/cljs/todo_list/core.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.158 seconds.[0m
+[36m----  Could not Analyze  src/cljs/todo_list/core.cljs  ----[0m
+
+  [1mNo such namespace: react-beautiful-dnd, could not locate react_beautiful_dnd.cljs, react_beautiful_dnd.cljc, or JavaScript source providing "react-beautiful-dnd" (Please check that namespaces with dashes use underscores in the ClojureScript file name) [0m
+
+[36m----  Analysis Error : Please see src/cljs/todo_list/core.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.169 seconds.[0m
+[36m----  Could not Analyze  src/cljs/todo_list/core.cljs  ----[0m
+
+  [1mNo such namespace: react-beautiful-dnd, could not locate react_beautiful_dnd.cljs, react_beautiful_dnd.cljc, or JavaScript source providing "react-beautiful-dnd" (Please check that namespaces with dashes use underscores in the ClojureScript file name) [0m
+
+[36m----  Analysis Error : Please see src/cljs/todo_list/core.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.165 seconds.[0m
+[36m----  Could not Analyze  src/cljs/todo_list/core.cljs  ----[0m
+
+  [1mNo such namespace: react-beautiful-dnd, could not locate react_beautiful_dnd.cljs, react_beautiful_dnd.cljc, or JavaScript source providing "react-beautiful-dnd" (Please check that namespaces with dashes use underscores in the ClojureScript file name) [0m
+
+[36m----  Analysis Error : Please see src/cljs/todo_list/core.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.145 seconds.[0m
+[36m----  Could not Analyze  src/cljs/todo_list/core.cljs  ----[0m
+
+  [1mNo such namespace: react-beautiful-dnd, could not locate react_beautiful_dnd.cljs, react_beautiful_dnd.cljc, or JavaScript source providing "react-beautiful-dnd" (Please check that namespaces with dashes use underscores in the ClojureScript file name) [0m
+
+[36m----  Analysis Error : Please see src/cljs/todo_list/core.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.149 seconds.[0m
+[36m----  Could not Analyze  src/cljs/todo_list/core.cljs  ----[0m
+
+  [1mNo such namespace: react-beautiful-dnd, could not locate react_beautiful_dnd.cljs, react_beautiful_dnd.cljc, or JavaScript source providing "react-beautiful-dnd" (Please check that namespaces with dashes use underscores in the ClojureScript file name) [0m
+
+[36m----  Analysis Error : Please see src/cljs/todo_list/core.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.149 seconds.[0m
+[36m----  Could not Analyze  src/cljs/todo_list/core.cljs  ----[0m
+
+  [1mNo such namespace: react-beautiful-dnd, could not locate react_beautiful_dnd.cljs, react_beautiful_dnd.cljc, or JavaScript source providing "react-beautiful-dnd" (Please check that namespaces with dashes use underscores in the ClojureScript file name) [0m
+
+[36m----  Analysis Error : Please see src/cljs/todo_list/core.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 1.415 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 0.352 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 0.381 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 0.356 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 0.292 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 0.314 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 0.377 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[36m----  Compiler Warning on   src/cljs/todo_list/core.cljs   line:91  column:3  ----[0m
+
+  [1mreagent.core/render is deprecated[0m
+
+  [36m87[0m  [36m      [column col (get @tasks col)])]])[0m
+  [36m88[0m  [36m[0m
+  [36m89[0m  [36m(defn mount-root [][0m
+  [36m90[0m  [36m  (fetch-tasks)[0m
+  [33m91[0m  [1m  (reagent/render[0m
+  [0m  [0m  [33m  ^--- reagent.core/render is deprecated[0m
+  [36m92[0m  [36m   [:div[0m
+  [36m93[0m  [36m    [:h1 "Task Manager"][0m
+  [36m94[0m  [36m    [task-form][0m
+  [36m95[0m  [36m    [task-board]][0m
+  [36m96[0m  [36m   (.getElementById js/document "app")))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/todo_list/core.cljs  ----[0m
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 0.414 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 2.102 seconds.[0m
+[36m----  Could not Read  src/cljs/todo_list/core.cljs   line:85 ----[0m
+
+  [1m/Users/maryamkhanoom/csci6221/todo-list/src/cljs/todo_list/core.cljs [line 85, col 1] Unexpected EOF while reading item 1 of map, starting at line 84 and column 20.[0m
+
+[36m----  Reader Error : Please see src/cljs/todo_list/core.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 0.33 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 0.401 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 0.387 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 2.174 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[36m----  Compiler Warning on   src/cljs/todo_list/core.cljs   line:118  column:1  ----[0m
+
+  [1mmount-root at line 89 is being replaced[0m
+
+  [36m114[0m  [36m      (if error[0m
+  [36m115[0m  [36m        [:div "Something went wrong."][0m
+  [36m116[0m  [36m        [wrapped-component]))}))[0m
+  [36m117[0m  [36m[0m
+  [33m118[0m  [1m(defn mount-root [][0m
+  [0m   [0m  [33m^--- mount-root at line 89 is being replaced[0m
+  [36m119[0m  [36m  (fetch-tasks)[0m
+  [36m120[0m  [36m  (dom/render[0m
+  [36m121[0m  [36m   [:div[0m
+  [36m122[0m  [36m    [:h1 "Task Manager"][0m
+  [36m123[0m  [36m    [task-form][0m
+
+[36m----  Compiler Warning : Please see src/cljs/todo_list/core.cljs  ----[0m
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 0.292 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 0.257 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[36m----  Compiler Warning on   src/cljs/todo_list/core.cljs   line:44  column:26  ----[0m
+
+  [1mUse of undeclared Var todo-list.core/delete-task[0m
+
+  [36m40[0m  [36m  [:div.task-item[0m
+  [36m41[0m  [36m   [:span (:task task)][0m
+  [36m42[0m  [36m   [:span (:due-date task)][0m
+  [36m43[0m  [36m   [:span (:people task)][0m
+  [33m44[0m  [1m   [:button {:on-click #(delete-task task)} "Delete"]])[0m
+  [0m  [0m  [33m                         ^--- Use of undeclared Var todo-list.core/delete-task[0m
+  [36m45[0m  [36m[0m
+  [36m46[0m  [36m(defn delete-task [task][0m
+  [36m47[0m  [36m  (DELETE "/tasks"[0m
+  [36m48[0m  [36m    {:params {:task task}[0m
+  [36m49[0m  [36m     :handler #(fetch-tasks)[0m
+
+[36m----  Compiler Warning : Please see src/cljs/todo_list/core.cljs  ----[0m
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 1.613 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[36m----  Compiler Warning on   src/cljs/todo_list/core.cljs   line:44  column:26  ----[0m
+
+  [1mUse of undeclared Var todo-list.core/delete-task[0m
+
+  [36m40[0m  [36m  [:div.task-item[0m
+  [36m41[0m  [36m   [:span (:task task)][0m
+  [36m42[0m  [36m   [:span (:due-date task)][0m
+  [36m43[0m  [36m   [:span (:people task)][0m
+  [33m44[0m  [1m   [:button {:on-click #(delete-task task)} "Delete"]])[0m
+  [0m  [0m  [33m                         ^--- Use of undeclared Var todo-list.core/delete-task[0m
+  [36m45[0m  [36m[0m
+  [36m46[0m  [36m(defn delete-task [task][0m
+  [36m47[0m  [36m  (DELETE "/tasks"[0m
+  [36m48[0m  [36m    {:params {:task task}[0m
+  [36m49[0m  [36m     :handler #(fetch-tasks)[0m
+
+[36m----  Compiler Warning : Please see src/cljs/todo_list/core.cljs  ----[0m
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 0.284 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 0.277 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 0.282 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.189 seconds.[0m
+[36m----  Could not Read  src/cljs/todo_list/core.cljs   line:81 ----[0m
+
+  [1m/Users/maryamkhanoom/csci6221/todo-list/src/cljs/todo_list/core.cljs [line 81, col 1] Unexpected EOF while reading item 3 of list, starting at line 80 and column 33.[0m
+
+[36m----  Reader Error : Please see src/cljs/todo_list/core.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 0.286 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 0.237 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 2.386 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 2.097 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[36m----  Compiler Warning on   src/cljs/todo_list/core.cljs   line:12  column:50  ----[0m
+
+  [1mUse of undeclared Var todo-list.core/read-string[0m
+
+  [36m 9[0m  [36m(defn fetch-tasks [][0m
+  [36m10[0m  [36m  (GET "/tasks"[0m
+  [36m11[0m  [36m    {:handler (fn [response][0m
+  [33m12[0m  [1m                (reset! tasks (group-by :status (read-string response))))[0m
+  [0m  [0m  [33m                                                 ^--- Use of undeclared Var todo-list.core/read-string[0m
+  [36m13[0m  [36m     :error-handler #(js/console.error "Failed to fetch tasks" %)}))[0m
+  [36m14[0m  [36m[0m
+  [36m15[0m  [36m(defn add-task [][0m
+  [36m16[0m  [36m  (POST "/tasks"[0m
+  [36m17[0m  [36m    {:params @new-task[0m
+
+[36m----  Compiler Warning : Please see src/cljs/todo_list/core.cljs  ----[0m
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 0.381 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Figwheel: Can't open  ("src/cljs/todo_list/core.cljs" 12 50) No :open-file-command supplied in the config.
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[36m----  Compiler Warning on   src/cljs/todo_list/core.cljs   line:13  column:50  ----[0m
+
+  [1mUse of undeclared Var todo-list.core/read-string[0m
+
+  [36m 9[0m  [36m(defn fetch-tasks [][0m
+  [36m10[0m  [36m  (GET "/tasks"[0m
+  [36m11[0m  [36m    {:handler (fn [response][0m
+  [36m12[0m  [36m                (js/console.log "Tasks fetched:" response)[0m
+  [33m13[0m  [1m                (reset! tasks (group-by :status (read-string response))))[0m
+  [0m  [0m  [33m                                                 ^--- Use of undeclared Var todo-list.core/read-string[0m
+  [36m14[0m  [36m     :error-handler #(js/console.error "Failed to fetch tasks" %)}))[0m
+  [36m15[0m  [36m[0m
+  [36m16[0m  [36m(defn add-task [][0m
+  [36m17[0m  [36m  (POST "/tasks"[0m
+  [36m18[0m  [36m    {:params @new-task[0m
+
+[36m----  Compiler Warning : Please see src/cljs/todo_list/core.cljs  ----[0m
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 0.353 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[36m----  Compiler Warning on   src/cljs/todo_list/core.cljs   line:13  column:50  ----[0m
+
+  [1mUse of undeclared Var todo-list.core/read-string[0m
+
+  [36m 9[0m  [36m(defn fetch-tasks [][0m
+  [36m10[0m  [36m  (GET "/tasks"[0m
+  [36m11[0m  [36m    {:handler (fn [response][0m
+  [36m12[0m  [36m                (js/console.log "Tasks fetched:" response)[0m
+  [33m13[0m  [1m                (reset! tasks (group-by :status (read-string response))))[0m
+  [0m  [0m  [33m                                                 ^--- Use of undeclared Var todo-list.core/read-string[0m
+  [36m14[0m  [36m     :error-handler #(js/console.error "Failed to fetch tasks" %)}))[0m
+  [36m15[0m  [36m[0m
+  [36m16[0m  [36m(defn add-task [][0m
+  [36m17[0m  [36m  (POST "/tasks"[0m
+  [36m18[0m  [36m    {:params @new-task[0m
+
+[36m----  Compiler Warning : Please see src/cljs/todo_list/core.cljs  ----[0m
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 0.284 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[36m----  Compiler Warning on   src/cljs/todo_list/core.cljs   line:13  column:50  ----[0m
+
+  [1mUse of undeclared Var todo-list.core/read-string[0m
+
+  [36m 9[0m  [36m(defn fetch-tasks [][0m
+  [36m10[0m  [36m  (GET "/tasks"[0m
+  [36m11[0m  [36m    {:handler (fn [response][0m
+  [36m12[0m  [36m                (js/console.log "Tasks fetched:" response)[0m
+  [33m13[0m  [1m                (reset! tasks (group-by :status (read-string response))))[0m
+  [0m  [0m  [33m                                                 ^--- Use of undeclared Var todo-list.core/read-string[0m
+  [36m14[0m  [36m     :error-handler #(js/console.error "Failed to fetch tasks" %)}))[0m
+  [36m15[0m  [36m[0m
+  [36m16[0m  [36m(defn add-task [][0m
+  [36m17[0m  [36m  (POST "/tasks"[0m
+  [36m18[0m  [36m    {:params @new-task[0m
+
+[36m----  Compiler Warning : Please see src/cljs/todo_list/core.cljs  ----[0m
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 0.382 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 0.412 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Notifying browser that CSS file changed: resources/public/css/style.css
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 0.354 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[32mSuccessfully compiled build :dev to "resources/public/js/compiled/todo_list.js" in 0.326 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/todo_list/core.js
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.188 seconds.[0m
+[36m----  Could not Read  src/cljs/todo_list/core.cljs   line:12  column:28  ----[0m
+
+  [1mNested #()s are not allowed[0m
+
+  [36m11[0m  [36m (defn remove-task [task][0m
+  [33m12[0m  [1m   (swap! tasks #(remove #(= % task) %)))[0m
+  [0m  [0m  [33m                           ^--- Nested #()s are not allowed[0m
+  [36m13[0m  [36m[0m
+  [36m14[0m  [36m (defn edit-task [task updated-task][0m
+  [36m15[0m  [36m   (swap! tasks #(mapv (fn [t] (if (= t task) updated-task t)) %)))[0m
+
+[36m----  Reader Error : Please see src/cljs/todo_list/core.cljs  ----[0m
+Notifying browser that CSS file changed: resources/public/css/style.css

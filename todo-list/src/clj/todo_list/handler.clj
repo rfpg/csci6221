@@ -4,23 +4,21 @@
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [ring.util.response :as response]
             [ring.middleware.json :refer [wrap-json-body wrap-json-response]]
-            [todo-list.tasks :refer [read-tasks write-tasks add-task remove-task edit-task]]))
+            [todo-list.tasks :as tasks]))
 
 (defroutes app-routes
   (GET "/" [] (response/resource-response "index.html" {:root "public"}))
-  (GET "/tasks" [] (response/response (prn-str (read-tasks))))
+  (GET "/tasks" [] (response/response (pr-str (tasks/read-tasks))))
   (POST "/tasks" {params :params}
-    (let [task params]
-      (add-task task)
-      (response/response "Task added")))
+    (tasks/add-task params)
+    (response/response "Task added"))
   (DELETE "/tasks" {params :params}
-    (let [task params]
-      (remove-task task)
-      (response/response "Task removed")))
+    (tasks/remove-task (:task params))
+    (response/response "Task removed"))
   (PUT "/tasks" {params :params}
-    (let [{:keys [old-task new-task]} params]
-      (edit-task old-task new-task)
-      (response/response "Task edited")))
+    (let [{:keys [task status]} params]
+      (tasks/update-task-status task status)
+      (response/response "Task updated")))
   (route/resources "/")
   (route/not-found "Not Found"))
 

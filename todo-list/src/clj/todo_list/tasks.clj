@@ -1,26 +1,32 @@
 (ns todo-list.tasks
-  (:require [clojure.edn :as edn]
-            [clojure.java.io :as io]))
+   (:require [clojure.edn :as edn]
+             [clojure.java.io :as io]))
 
-(def tasks-file "resources/tasks.edn")
+ (defonce tasks (atom []))
 
-(defn read-tasks []
-  (with-open [r (io/reader tasks-file)]
-    (edn/read r)))
+ (defn read-tasks []
+   (try
+     (reset! tasks (edn/read-string (slurp (io/resource "tasks.edn"))))
+     @tasks
+     (catch Exception e
+       (prn "Error reading tasks:" e)
+       [])))
 
-(defn write-tasks [tasks]
-  (with-open [w (io/writer tasks-file)]
-    (binding [*out* w]
-      (prn tasks))))
+ (defn write-tasks [tasks]
+   (spit "resources/tasks.edn" (prn-str tasks)))
 
-(defn add-task [task]
-  (let [tasks (read-tasks)]
-    (write-tasks (conj tasks task))))
+ (defn add-task [task]
+   (swap! tasks conj task)
+   (write-tasks @tasks))
 
-(defn remove-task [task]
-  (let [tasks (read-tasks)]
-    (write-tasks (remove #(= (:task %) (:task task)) tasks))))
+ (defn remove-task [task]
+   (swap! tasks (fn [ts] (remove #(= task (:task %)) ts)))
+   (write-tasks @tasks))
 
-(defn edit-task [old-task new-task]
-  (let [tasks (read-tasks)]
-    (write-tasks (map (fn [t] (if (= (:task t) (:task old-task)) new-task t)) tasks))))
+ (defn update-task-status [task new-status]
+   (swap! tasks (fn [ts]
+                  (map #(if (= task (:task %))
+                          (assoc % :status new-status)
+                          %)
+                       ts)))
+   (write-tasks @tasks))

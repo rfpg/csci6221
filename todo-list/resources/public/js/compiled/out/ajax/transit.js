@@ -5,10 +5,10 @@ goog.require('cognitect.transit');
 goog.require('ajax.interceptors');
 goog.require('ajax.protocols');
 goog.require('ajax.util');
-ajax.transit.transit_type = (function ajax$transit$transit_type(p__21733){
-var map__21734 = p__21733;
-var map__21734__$1 = cljs.core.__destructure_map.call(null,map__21734);
-var type = cljs.core.get.call(null,map__21734__$1,new cljs.core.Keyword(null,"type","type",1174270348));
+ajax.transit.transit_type = (function ajax$transit$transit_type(p__23624){
+var map__23625 = p__23624;
+var map__23625__$1 = cljs.core.__destructure_map.call(null,map__23625);
+var type = cljs.core.get.call(null,map__23625__$1,new cljs.core.Keyword(null,"type","type",1174270348));
 var or__4160__auto__ = type;
 if(cljs.core.truth_(or__4160__auto__)){
 return or__4160__auto__;
@@ -38,8 +38,8 @@ return cognitect.transit.write.call(null,writer,params);
  * :handlers Custom Transit handlers (refer to Transit documentation)
  */
 ajax.transit.transit_request_format = (function ajax$transit$transit_request_format(var_args){
-var G__21736 = arguments.length;
-switch (G__21736) {
+var G__23627 = arguments.length;
+switch (G__23627) {
 case 0:
 return ajax.transit.transit_request_format.cljs$core$IFn$_invoke$arity$0();
 
@@ -86,8 +86,8 @@ return cognitect.transit.read.call(null,reader,ajax.protocols._body.call(null,re
  * :handlers Custom Transit handlers (refer to Transit documentation)
  */
 ajax.transit.transit_response_format = (function ajax$transit$transit_response_format(var_args){
-var G__21739 = arguments.length;
-switch (G__21739) {
+var G__23630 = arguments.length;
+switch (G__23630) {
 case 0:
 return ajax.transit.transit_response_format.cljs$core$IFn$_invoke$arity$0();
 
@@ -121,4 +121,4 @@ return ajax.interceptors.map__GT_ResponseFormat.call(null,new cljs.core.Persiste
 (ajax.transit.transit_response_format.cljs$lang$maxFixedArity = 2);
 
 
-//# sourceMappingURL=transit.js.map?rel=1717629076786
+//# sourceMappingURL=transit.js.map?rel=1717787129583
