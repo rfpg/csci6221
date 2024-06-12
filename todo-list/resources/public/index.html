@@ -145,44 +145,31 @@
     </div>
     <div class="board">
         <div class="column ready-to-start-column" ondragover="allowDrop(event)" ondrop="drop(event)">
-            <div class="column-header ready-to-start">Ready to start / 1</div>
-            <div class="tasks" id="ready-to-start-tasks">
-                <div class="task" id="task-1" draggable="true" ondragstart="drag(event)">
-                    <div class="task-title">Task 2</div>
-                    <div class="task-detail">Medium</div>
-                    <button class="edit-button" onclick="openEditModal(this)">Edit</button>
-                </div>
-            </div>
+            <div class="column-header ready-to-start">Ready to start</div>
+            <div class="tasks" id="ready-to-start-tasks"></div>
         </div>
         <div class="column in-progress-column" ondragover="allowDrop(event)" ondrop="drop(event)">
-            <div class="column-header in-progress">In Progress / 1</div>
-            <div class="tasks" id="in-progress-tasks">
-                <div class="task" id="task-2" draggable="true" ondragstart="drag(event)">
-                    <div class="task-title">Task 1</div>
-                    <div class="task-detail">High</div>
-                    <div class="task-detail">3 SP</div>
-                    <button class="edit-button" onclick="openEditModal(this)">Edit</button>
-                </div>
-            </div>
+            <div class="column-header in-progress">In Progress</div>
+            <div class="tasks" id="in-progress-tasks"></div>
         </div>
         <div class="column waiting-for-review-column" ondragover="allowDrop(event)" ondrop="drop(event)">
-            <div class="column-header waiting-for-review">Waiting for review / 0</div>
+            <div class="column-header waiting-for-review">Waiting for review</div>
             <div class="tasks" id="waiting-for-review-tasks"></div>
         </div>
         <div class="column pending-deploy-column" ondragover="allowDrop(event)" ondrop="drop(event)">
-            <div class="column-header pending-deploy">Pending Deploy / 0</div>
+            <div class="column-header pending-deploy">Pending Deploy</div>
             <div class="tasks" id="pending-deploy-tasks"></div>
         </div>
         <div class="column done-column" ondragover="allowDrop(event)" ondrop="drop(event)">
-            <div class="column-header done">Done / 0</div>
+            <div class="column-header done">Done</div>
             <div class="tasks" id="done-tasks"></div>
         </div>
         <div class="column stuck-column" ondragover="allowDrop(event)" ondrop="drop(event)">
-            <div class="column-header stuck">Stuck / 0</div>
+            <div class="column-header stuck">Stuck</div>
             <div class="tasks" id="stuck-tasks"></div>
         </div>
         <div class="column blank-column" ondragover="allowDrop(event)" ondrop="drop(event)">
-            <div class="column-header blank">Blank / 0</div>
+            <div class="column-header blank">Blank</div>
             <div class="tasks" id="blank-tasks"></div>
         </div>
     </div>

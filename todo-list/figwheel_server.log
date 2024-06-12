@@ -584,3 +584,31 @@ Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/c
 
 [36m----  Reader Error : Please see src/cljs/todo_list/core.cljs  ----[0m
 Notifying browser that CSS file changed: resources/public/css/style.css
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.148 seconds.[0m
+[36m----  Could not Read  src/cljs/todo_list/core.cljs   line:12  column:28  ----[0m
+
+  [1mNested #()s are not allowed[0m
+
+  [36m11[0m  [36m (defn remove-task [task][0m
+  [33m12[0m  [1m   (swap! tasks #(remove #(= % task) %)))[0m
+  [0m  [0m  [33m                           ^--- Nested #()s are not allowed[0m
+  [36m13[0m  [36m[0m
+  [36m14[0m  [36m (defn edit-task [task updated-task][0m
+  [36m15[0m  [36m   (swap! tasks #(mapv (fn [t] (if (= t task) updated-task t)) %)))[0m
+
+[36m----  Reader Error : Please see src/cljs/todo_list/core.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.17 seconds.[0m
+[36m----  Could not Read  src/cljs/todo_list/core.cljs   line:16  column:28  ----[0m
+
+  [1mNested #()s are not allowed[0m
+
+  [36m15[0m  [36m (defn remove-task [task][0m
+  [33m16[0m  [1m   (swap! tasks #(remove #(= % task) %))[0m
+  [0m  [0m  [33m                           ^--- Nested #()s are not allowed[0m
+  [36m17[0m  [36m   (save-tasks!))[0m
+  [36m18[0m  [36m[0m
+  [36m19[0m  [36m (defn edit-task [task updated-task][0m
+
+[36m----  Reader Error : Please see src/cljs/todo_list/core.cljs  ----[0m

@@ -2,17 +2,23 @@
    (:require [reagent.core :as r]
              [reagent.dom :as dom]))
 
- (defonce tasks (r/atom []))
+ (defonce tasks (r/atom (js->clj (js/JSON.parse (or (.getItem js/localStorage "tasks") "[]")) :keywordize-keys true)))
  (defonce current-task (r/atom nil))
 
+ (defn save-tasks! []
+   (.setItem js/localStorage "tasks" (js/JSON.stringify (clj->js @tasks))))
+
  (defn add-task [task]
-   (swap! tasks conj task))
+   (swap! tasks conj task)
+   (save-tasks!))
 
  (defn remove-task [task]
-   (swap! tasks #(remove #(= % task) %)))
+   (swap! tasks #(remove #(= % task) %))
+   (save-tasks!))
 
  (defn edit-task [task updated-task]
-   (swap! tasks #(mapv (fn [t] (if (= t task) updated-task t)) %)))
+   (swap! tasks #(mapv (fn [t] (if (= t task) updated-task t)) %))
+   (save-tasks!))
 
  (defn task-form []
    (let [name (r/atom "")
@@ -32,12 +38,13 @@
          [:option {:value "done"} "Done"]
          [:option {:value "stuck"} "Stuck"]
          [:option {:value "blank"} "Blank"]]
-        [:button {:on-click #(add-task {:name @name :date @date :assignee @assignee :status @status})} "Add Task"]]))))
+        [:button {:on-click #(add-task {:id (str (random-uuid)) :name @name :date @date :assignee @assignee :status @status})} "Add Task"]]))))
 
 (defn task-item [task]
   (fn []
     [:div.task {:draggable true
-                :on-drag-start #(reset! current-task task)}
+                :on-drag-start #(reset! current-task task)
+                :id (:id task)}
      [:div.task-title (:name task)]
      [:div.task-detail (str "Due: " (:date task))]
      [:div.task-detail (str "Assigned to: " (:assignee task))]
@@ -52,7 +59,7 @@
                              (edit-task task (assoc task :status status))
                              (reset! current-task nil))}
      (for [task tasks]
-       ^{:key (:name task)}
+       ^{:key (:id task)}
        [task-item task])]))
 
 (defn task-board []
@@ -101,7 +108,7 @@
          [:option {:value "stuck"} "Stuck"]
          [:option {:value "blank"} "Blank"]]
         [:button {:on-click #(do
-                               (edit-task @current-task {:name @name :date @date :assignee @assignee :status @status})
+                               (edit-task @current-task {:id (:id @current-task) :name @name :date @date :assignee @assignee :status @status})
                                (reset! current-task nil)
                                (-> (js/document.getElementById "editModal") .close))} "Save"]]])))
 
