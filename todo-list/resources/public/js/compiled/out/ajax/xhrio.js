@@ -108,4 +108,4 @@ var this$__$1 = this;
 return this$__$1.send(id,uri,method,body,cljs.core.clj__GT_js.call(null,headers),priority,handler,max_retries);
 }));
 
-//# sourceMappingURL=xhrio.js.map?rel=1717787129645
+//# sourceMappingURL=xhrio.js.map?rel=1718400798425

@@ -1,44 +1,54 @@
 (ns todo-list.core
-   (:require [reagent.core :as r]
-             [reagent.dom :as dom]))
+  (:require [reagent.core :as r]
+            [reagent.dom :as dom]
+            [todo-list.db :as db]
+            [ajax.core :refer [GET POST]]))
 
- (defonce tasks (r/atom (js->clj (js/JSON.parse (or (.getItem js/localStorage "tasks") "[]")) :keywordize-keys true)))
- (defonce current-task (r/atom nil))
+(defonce tasks (r/atom []))
+(defonce current-task (r/atom nil))
 
- (defn save-tasks! []
-   (.setItem js/localStorage "tasks" (js/JSON.stringify (clj->js @tasks))))
+(defn load-tasks []
+  (let [db-tasks (db/get-tasks)]
+    (println "Loaded tasks from DB:" db-tasks)
+    (reset! tasks (mapv #(assoc % :id (str (:id %))) db-tasks))
+    (println "Tasks after reset:" @tasks)))
 
- (defn add-task [task]
-   (swap! tasks conj task)
-   (save-tasks!))
+(defn save-task! [task]
+  (println "Saving task:" task)
+  (if (some #(= (:id %) (:id task)) @tasks)
+    (db/update-task task)
+    (db/add-task task))
+  (load-tasks))
 
- (defn remove-task [task]
-   (swap! tasks #(remove #(= % task) %))
-   (save-tasks!))
+(defn add-task [task]
+  (save-task! task))
 
- (defn edit-task [task updated-task]
-   (swap! tasks #(mapv (fn [t] (if (= t task) updated-task t)) %))
-   (save-tasks!))
+(defn remove-task [task]
+  (db/delete-task (:id task))
+  (load-tasks))
 
- (defn task-form []
-   (let [name (r/atom "")
-         date (r/atom "")
-         assignee (r/atom "")
-         status (r/atom "ready-to-start")]
-     (fn []
-       [:div.task-form
-        [:input {:type "text" :placeholder "Task Name" :value @name :on-change #(reset! name (-> % .-target .-value))}]
-        [:input {:type "date" :value @date :on-change #(reset! date (-> % .-target .-value))}]
-        [:input {:type "text" :placeholder "Assignee" :value @assignee :on-change #(reset! assignee (-> % .-target .-value))}]
-        [:select {:value @status :on-change #(reset! status (-> % .-target .-value))}
-         [:option {:value "ready-to-start"} "Ready to start"]
-         [:option {:value "in-progress"} "In Progress"]
-         [:option {:value "waiting-for-review"} "Waiting for review"]
-         [:option {:value "pending-deploy"} "Pending Deploy"]
-         [:option {:value "done"} "Done"]
-         [:option {:value "stuck"} "Stuck"]
-         [:option {:value "blank"} "Blank"]]
-        [:button {:on-click #(add-task {:id (str (random-uuid)) :name @name :date @date :assignee @assignee :status @status})} "Add Task"]]))))
+(defn edit-task [task updated-task]
+  (save-task! updated-task))
+
+(defn task-form []
+  (let [name (r/atom "")
+        date (r/atom "")
+        assignee (r/atom "")
+        status (r/atom "ready-to-start")]
+    (fn []
+      [:div.task-form
+       [:input {:type "text" :placeholder "Task Name" :value @name :on-change #(reset! name (-> % .-target .-value))}]
+       [:input {:type "date" :value @date :on-change #(reset! date (-> % .-target .-value))}]
+       [:input {:type "text" :placeholder "Assignee" :value @assignee :on-change #(reset! assignee (-> % .-target .-value))}]
+       [:select {:value @status :on-change #(reset! status (-> % .-target .-value))}
+        [:option {:value "ready-to-start"} "Ready to start"]
+        [:option {:value "in-progress"} "In Progress"]
+        [:option {:value "waiting-for-review"} "Waiting for review"]
+        [:option {:value "pending-deploy"} "Pending Deploy"]
+        [:option {:value "done"} "Done"]
+        [:option {:value "stuck"} "Stuck"]
+        [:option {:value "blank"} "Blank"]]
+       [:button {:on-click #(add-task {:id (str (java.util.UUID/randomUUID)) :name @name :date @date :assignee @assignee :status @status})} "Add Task"]])))
 
 (defn task-item [task]
   (fn []
@@ -122,4 +132,6 @@
   (dom/render [home-page] (.getElementById js/document "app")))
 
 (defn init! []
+  (db/create-tasks-table)
+  (load-tasks)
   (mount-root))

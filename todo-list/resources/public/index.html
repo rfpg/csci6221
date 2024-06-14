@@ -299,6 +299,51 @@
             document.getElementById(taskStatus + '-tasks').appendChild(currentTask);
             closeEditModal();
         }
+
+        function fetchTasks() {
+            fetch('http://localhost:3000/tasks')
+                .then(response => response.json())
+                .then(tasks => {
+                    console.log("Fetched tasks:", tasks); // Add console log to verify fetched data
+                    if (!Array.isArray(tasks)) {
+                        throw new Error("Response is not an array");
+                    }
+                    tasks.forEach(task => {
+                        const taskElement = document.createElement('div');
+                        taskElement.classList.add('task');
+                        taskElement.setAttribute('draggable', 'true');
+                        taskElement.setAttribute('ondragstart', 'drag(event)');
+                        taskElement.setAttribute('id', `task-${task.id}`);
+
+                        const taskTitle = document.createElement('div');
+                        taskTitle.classList.add('task-title');
+                        taskTitle.textContent = task.name;
+
+                        const taskDetail1 = document.createElement('div');
+                        taskDetail1.classList.add('task-detail');
+                        taskDetail1.textContent = `Due: ${task.date}`;
+
+                        const taskDetail2 = document.createElement('div');
+                        taskDetail2.classList.add('task-detail');
+                        taskDetail2.textContent = `Assigned to: ${task.assignee}`;
+
+                        const editButton = document.createElement('button');
+                        editButton.classList.add('edit-button');
+                        editButton.textContent = 'Edit';
+                        editButton.setAttribute('onclick', 'openEditModal(this)');
+
+                        taskElement.appendChild(taskTitle);
+                        taskElement.appendChild(taskDetail1);
+                        taskElement.appendChild(taskDetail2);
+                        taskElement.appendChild(editButton);
+
+                        document.getElementById(`${task.status}-tasks`).appendChild(taskElement);
+                    });
+                })
+                .catch(error => console.error('Error fetching tasks:', error));
+        }
+
+        window.onload = fetchTasks;
     </script>
 </body>
 </html>

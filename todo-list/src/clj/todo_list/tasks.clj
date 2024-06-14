@@ -1,32 +1,35 @@
 (ns todo-list.tasks
-   (:require [clojure.edn :as edn]
-             [clojure.java.io :as io]))
+  (:require [clojure.java.jdbc :as jdbc]
+            [todo-list.db :as db]))
 
- (defonce tasks (atom []))
+(defonce tasks (atom []))
 
- (defn read-tasks []
-   (try
-     (reset! tasks (edn/read-string (slurp (io/resource "tasks.edn"))))
-     @tasks
-     (catch Exception e
-       (prn "Error reading tasks:" e)
-       [])))
+(defn read-tasks []
+  (try
+    (let [result (db/get-tasks)]
+      (reset! tasks result)
+      (println "Tasks from DB:" result)  ; Log tasks to verify
+      result)
+    (catch Exception e
+      (prn "Error reading tasks:" e)
+      [])))
 
- (defn write-tasks [tasks]
-   (spit "resources/tasks.edn" (prn-str tasks)))
+(defn add-task [task]
+  (db/add-task task)
+  (swap! tasks conj task)
+  (let [result (db/get-tasks)]
+    (println "Current tasks in the database:" result)))
 
- (defn add-task [task]
-   (swap! tasks conj task)
-   (write-tasks @tasks))
+(defn remove-task [id]
+  (db/delete-task id)
+  (swap! tasks (fn [ts] (remove #(= id (:id %)) ts))))
 
- (defn remove-task [task]
-   (swap! tasks (fn [ts] (remove #(= task (:task %)) ts)))
-   (write-tasks @tasks))
-
- (defn update-task-status [task new-status]
-   (swap! tasks (fn [ts]
-                  (map #(if (= task (:task %))
-                          (assoc % :status new-status)
-                          %)
-                       ts)))
-   (write-tasks @tasks))
+(defn update-task-status [id new-status]
+  (let [task (first (filter #(= id (:id %)) @tasks))]
+    (when task
+      (db/update-task (assoc task :status new-status))
+      (swap! tasks (fn [ts]
+                     (map #(if (= id (:id %))
+                             (assoc % :status new-status)
+                             %)
+                          ts))))))
