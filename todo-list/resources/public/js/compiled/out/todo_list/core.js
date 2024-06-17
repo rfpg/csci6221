@@ -194,4 +194,4 @@ todo_list.core.init_BANG_ = (function todo_list$core$init_BANG_(){
 return todo_list.core.mount_root.call(null);
 });
 
-//# sourceMappingURL=core.js.map?rel=1718650404903
+//# sourceMappingURL=core.js.map?rel=1718651152541

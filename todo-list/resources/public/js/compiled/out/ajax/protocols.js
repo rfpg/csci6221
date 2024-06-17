@@ -551,4 +551,4 @@ return (new ajax.protocols.Response(new cljs.core.Keyword(null,"status","status"
 });
 
 
-//# sourceMappingURL=protocols.js.map?rel=1718650403999
+//# sourceMappingURL=protocols.js.map?rel=1718651151665
