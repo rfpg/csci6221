@@ -18,11 +18,11 @@ return goog.object.get(window,"WebSocket");
 } else {
 if(figwheel.client.utils.node_env_QMARK_.call(null)){
 try{return require("ws");
-}catch (e31007){if((e31007 instanceof Error)){
-var e = e31007;
+}catch (e50058){if((e50058 instanceof Error)){
+var e = e50058;
 return null;
 } else {
-throw e31007;
+throw e50058;
 
 }
 }} else {
@@ -78,14 +78,14 @@ return and__4149__auto__;
 return false;
 }
 });
-figwheel.client.socket.open = (function figwheel$client$socket$open(p__31008){
-var map__31009 = p__31008;
-var map__31009__$1 = cljs.core.__destructure_map.call(null,map__31009);
-var opts = map__31009__$1;
-var retry_count = cljs.core.get.call(null,map__31009__$1,new cljs.core.Keyword(null,"retry-count","retry-count",1936122875));
-var retried_count = cljs.core.get.call(null,map__31009__$1,new cljs.core.Keyword(null,"retried-count","retried-count",-2127867357));
-var websocket_url = cljs.core.get.call(null,map__31009__$1,new cljs.core.Keyword(null,"websocket-url","websocket-url",-490444938));
-var build_id = cljs.core.get.call(null,map__31009__$1,new cljs.core.Keyword(null,"build-id","build-id",1642831089));
+figwheel.client.socket.open = (function figwheel$client$socket$open(p__50059){
+var map__50060 = p__50059;
+var map__50060__$1 = cljs.core.__destructure_map.call(null,map__50060);
+var opts = map__50060__$1;
+var retry_count = cljs.core.get.call(null,map__50060__$1,new cljs.core.Keyword(null,"retry-count","retry-count",1936122875));
+var retried_count = cljs.core.get.call(null,map__50060__$1,new cljs.core.Keyword(null,"retried-count","retried-count",-2127867357));
+var websocket_url = cljs.core.get.call(null,map__50060__$1,new cljs.core.Keyword(null,"websocket-url","websocket-url",-490444938));
+var build_id = cljs.core.get.call(null,map__50060__$1,new cljs.core.Keyword(null,"build-id","build-id",1642831089));
 var temp__5733__auto__ = figwheel.client.socket.get_websocket_imp.call(null);
 if(cljs.core.truth_(temp__5733__auto__)){
 var WebSocket = temp__5733__auto__;
@@ -146,4 +146,4 @@ return figwheel.client.utils.log.call(null,new cljs.core.Keyword(null,"debug","d
 }
 });
 
-//# sourceMappingURL=socket.js.map?rel=1718651154394
+//# sourceMappingURL=socket.js.map?rel=1718651921745
