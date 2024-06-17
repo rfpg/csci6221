@@ -1,113 +1,147 @@
 (ns todo-list.core
-  (:require [reagent.core :as reagent]
+  (:require [reagent.core :as r]
             [reagent.dom :as dom]
-            [ajax.core :refer [GET POST DELETE PUT]]
+            [ajax.core :refer [GET POST PUT DELETE]]
             [cljs.reader :refer [read-string]]))
 
-(defonce tasks (reagent/atom {:ready-to-start [] :in-progress [] :waiting-for-review [] :pending-deploy [] :done [] :stuck [] :blank []}))
-(defonce new-task (reagent/atom {:task "" :due-date "" :people "" :status "ready-to-start"}))
+(defonce tasks (r/atom []))
+(defonce current-task-id (r/atom nil))
 
 (defn fetch-tasks []
   (GET "/tasks"
-    {:handler (fn [response]
-                (js/console.log "Tasks fetched:" response)
-                (reset! tasks (group-by :status (read-string response))))
-     :error-handler #(js/console.error "Failed to fetch tasks" %)}))
+       {:handler #(reset! tasks (read-string %))
+        :error-handler #(js/console.error "Failed to fetch tasks" %)}))
 
-(defn add-task []
+(defn add-task [task]
   (POST "/tasks"
-    {:params @new-task
-     :handler (fn [response]
-                (fetch-tasks)
-                (reset! new-task {:task "" :due-date "" :people "" :status "ready-to-start"}))
-     :error-handler #(js/console.error "Failed to add task" %)}))
+        {:params task
+         :handler #(do
+                     (swap! tasks conj (assoc task :id (random-uuid)))
+                     (js/console.log "Task added" %))
+         :error-handler #(js/console.error "Failed to add task" %)}))
 
-(defn delete-task [task]
-  (DELETE "/tasks"
-    {:params {:task (:task task)}
-     :handler #(fetch-tasks)
-     :error-handler #(js/console.error "Failed to delete task" %)}))
+(defn remove-task [task-id]
+  (let [new-tasks (remove #(= (:id %) task-id) @tasks)]
+    (reset! tasks new-tasks)
+    (DELETE "/tasks"
+            {:params {:task task-id}
+             :handler #(js/console.log "Task removed" %)
+             :error-handler #(js/console.error "Failed to remove task" %)})))
 
-(defn update-task-status [task new-status]
-  (PUT "/tasks"
-    {:params {:task (:task task) :status new-status}
-     :handler #(fetch-tasks)
-     :error-handler #(js/console.error "Failed to update task status" %)}))
+(defn edit-task [task-id updated-task]
+  (let [update-tasks (fn [tasks]
+                       (mapv (fn [t] (if (= (:id t) task-id) (merge t updated-task) t)) tasks))]
+    (swap! tasks update-tasks)
+    (PUT "/tasks"
+         {:params {:task task-id :status (:status updated-task)}
+          :handler #(js/console.log "Task updated" %)
+          :error-handler #(js/console.error "Failed to update task" %)})))
 
 (defn task-form []
-  [:div.task-form
-   [:input {:type "text"
-            :placeholder "Task"
-            :value (:task @new-task)
-            :on-change #(swap! new-task assoc :task (-> % .-target .-value))}]
-   [:input {:type "date"
-            :value (:due-date @new-task)
-            :on-change #(swap! new-task assoc :due-date (-> % .-target .-value))}]
-   [:input {:type "text"
-            :placeholder "People"
-            :value (:people @new-task)
-            :on-change #(swap! new-task assoc :people (-> % .-target .-value))}]
-   [:select {:value (:status @new-task)
-             :on-change #(swap! new-task assoc :status (-> % .-target .-value))}
-    [:option {:value "ready-to-start"} "Ready to start"]
-    [:option {:value "in-progress"} "In Progress"]
-    [:option {:value "waiting-for-review"} "Waiting for review"]
-    [:option {:value "pending-deploy"} "Pending Deploy"]
-    [:option {:value "done"} "Done"]
-    [:option {:value "stuck"} "Stuck"]
-    [:option {:value "blank"} "Blank"]]
-   [:button {:on-click add-task} "Add Task"]])
+  (let [name (r/atom "")
+        date (r/atom "")
+        assignee (r/atom "")
+        status (r/atom "ready-to-start")]
+    (fn []
+      [:div.task-form
+       [:input {:type "text" :placeholder "Task Name" :value @name :on-change #(reset! name (-> % .-target .-value))}]
+       [:input {:type "date" :value @date :on-change #(reset! date (-> % .-target .-value))}]
+       [:input {:type "text" :placeholder "Assignee" :value @assignee :on-change #(reset! assignee (-> % .-target .-value))}]
+       [:select {:value @status :on-change #(reset! status (-> % .-target .-value))}
+        [:option {:value "ready-to-start"} "Ready to start"]
+        [:option {:value "in-progress"} "In Progress"]
+        [:option {:value "waiting-for-review"} "Waiting for review"]
+        [:option {:value "pending-deploy"} "Pending Deploy"]
+        [:option {:value "done"} "Done"]
+        [:option {:value "stuck"} "Stuck"]
+        [:option {:value "blank"} "Blank"]]
+       [:button {:on-click #(add-task {:name @name :date @date :assignee @assignee :status @status})} "Add Task"]])))
 
 (defn task-item [task]
-  [:div.task-item
-   [:span (:task task) " (" (:due-date task) ") "]
-   [:span "Assigned to: " (:people task) " "]
-   [:button {:on-click #(delete-task task)} "Delete"]
-   (when-not (= (:status task) "ready-to-start")
-     [:button {:on-click #(update-task-status task "ready-to-start")} "Move to Ready to start"])
-   (when-not (= (:status task) "in-progress")
-     [:button {:on-click #(update-task-status task "in-progress")} "Move to In Progress"])
-   (when-not (= (:status task) "waiting-for-review")
-     [:button {:on-click #(update-task-status task "waiting-for-review")} "Move to Waiting for review"])
-   (when-not (= (:status task) "pending-deploy")
-     [:button {:on-click #(update-task-status task "pending-deploy")} "Move to Pending Deploy"])
-   (when-not (= (:status task) "done")
-     [:button {:on-click #(update-task-status task "done")} "Move to Done"])
-   (when-not (= (:status task) "stuck")
-     [:button {:on-click #(update-task-status task "stuck")} "Move to Stuck"])
-   (when-not (= (:status task) "blank")
-     [:button {:on-click #(update-task-status task "blank")} "Move to Blank"])])
+  (fn []
+    [:div.task {:draggable true
+                :on-drag-start #(do
+                                  (reset! current-task-id (:id task))
+                                  (js/console.log "Drag start" (:id task)))}
+     [:div.task-title (:name task)]
+     [:div.task-detail (str "Due: " (:date task))]
+     [:div.task-detail (str "Assigned to: " (:assignee task))]
+     [:button.edit-button {:on-click #(do
+                                        (reset! current-task-id (:id task))
+                                        (.open (js/document.getElementById "editModal")))} "Edit"]]))
+
+(defn task-list [status]
+  (let [tasks-by-status (filter #(= (:status %) status) @tasks)]
+    [:div.tasks {:on-drag-over #(do (.preventDefault %)
+                                    (js/console.log "Drag over" status))
+                 :on-drop #(let [task-id @current-task-id]
+                             (js/console.log "Drop" status task-id)
+                             (when task-id
+                               (edit-task task-id {:status status})
+                               (reset! current-task-id nil)))}
+     (for [task tasks-by-status]
+       ^{:key (:id task)}
+       [task-item task])]))
 
 (defn task-board []
   [:div.board
-   [:div {:class "table"}
-    [:div {:class "table-row"}
-     [:div {:class "table-cell"} [:h2 "Ready to start / " (count (get @tasks :ready-to-start))]]
-     [:div {:class "table-cell"} [:h2 "In Progress / " (count (get @tasks :in-progress))]]
-     [:div {:class "table-cell"} [:h2 "Waiting for review / " (count (get @tasks :waiting-for-review))]]
-     [:div {:class "table-cell"} [:h2 "Pending Deploy / " (count (get @tasks :pending-deploy))]]
-     [:div {:class "table-cell"} [:h2 "Done / " (count (get @tasks :done))]]
-     [:div {:class "table-cell"} [:h2 "Stuck / " (count (get @tasks :stuck))]]
-     [:div {:class "table-cell"} [:h2 "Blank / " (count (get @tasks :blank))]]]
-    [:div {:class "table-row"}
-     [:div {:class "table-cell"} (for [task (get @tasks :ready-to-start)] ^{:key (:task task)} [task-item task])]
-     [:div {:class "table-cell"} (for [task (get @tasks :in-progress)] ^{:key (:task task)} [task-item task])]
-     [:div {:class "table-cell"} (for [task (get @tasks :waiting-for-review)] ^{:key (:task task)} [task-item task])]
-     [:div {:class "table-cell"} (for [task (get @tasks :pending-deploy)] ^{:key (:task task)} [task-item task])]
-     [:div {:class "table-cell"} (for [task (get @tasks :done)] ^{:key (:task task)} [task-item task])]
-     [:div {:class "table-cell"} (for [task (get @tasks :stuck)] ^{:key (:task task)} [task-item task])]
-     [:div {:class "table-cell"} (for [task (get @tasks :blank)] ^{:key (:task task)} [task-item task])]]]])
+   [:div.column {:class "ready-to-start-column"}
+    [:div.column-header "Ready to start"]
+    [task-list "ready-to-start"]]
+   [:div.column {:class "in-progress-column"}
+    [:div.column-header "In Progress"]
+    [task-list "in-progress"]]
+   [:div.column {:class "waiting-for-review-column"}
+    [:div.column-header "Waiting for review"]
+    [task-list "waiting-for-review"]]
+   [:div.column {:class "pending-deploy-column"}
+    [:div.column-header "Pending Deploy"]
+    [task-list "pending-deploy"]]
+   [:div.column {:class "done-column"}
+    [:div.column-header "Done"]
+    [task-list "done"]]
+   [:div.column {:class "stuck-column"}
+    [:div.column-header "Stuck"]
+    [task-list "stuck"]]
+   [:div.column {:class "blank-column"}
+    [:div.column-header "Blank"]
+    [task-list "blank"]]])
+
+(defn edit-modal []
+  (let [name (r/atom "")
+        date (r/atom "")
+        assignee (r/atom "")
+        status (r/atom "ready-to-start")]
+    (fn []
+      [:div.modal {:id "editModal"}
+       [:div.modal-content
+        [:span.close {:on-click #(-> (js/document.getElementById "editModal") .close)} "&times;"]
+        [:h2 "Edit Task"]
+        [:input {:type "text" :placeholder "Task Name" :value @name :on-change #(reset! name (-> % .-target .-value))}]
+        [:input {:type "date" :value @date :on-change #(reset! date (-> % .-target .-value))}]
+        [:input {:type "text" :placeholder "Assignee" :value @assignee :on-change #(reset! assignee (-> % .-target .-value))}]
+        [:select {:value @status :on-change #(reset! status (-> % .-target .-value))}
+         [:option {:value "ready-to-start"} "Ready to start"]
+         [:option {:value "in-progress"} "In Progress"]
+         [:option {:value "waiting-for-review"} "Waiting for review"]
+         [:option {:value "pending-deploy"} "Pending Deploy"]
+         [:option {:value "done"} "Done"]
+         [:option {:value "stuck"} "Stuck"]
+         [:option {:value "blank"} "Blank"]]
+        [:button {:on-click #(do
+                               (edit-task @current-task-id {:name @name :date @date :assignee @assignee :status @status})
+                               (reset! current-task-id nil)
+                               (-> (js/document.getElementById "editModal") .close))} "Save"]]])))
+
+(defn home-page []
+  [:div
+   [task-form]
+   [task-board]
+   [edit-modal]])
 
 (defn mount-root []
   (fetch-tasks)
-  (dom/render
-   [:div
-    [:h1 "Task Manager"]
-    [task-form]
-    [task-board]]
-   (.getElementById js/document "app")))
+  (dom/render [home-page] (.getElementById js/document "app")))
 
-(defn init []
+(defn init! []
   (mount-root))
-
-(init)

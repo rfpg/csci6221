@@ -1,58 +1,86 @@
 (ns todo-list.core
-   (:require [reagent.core :as r]
-             [reagent.dom :as dom]))
+  (:require [reagent.core :as r]
+            [reagent.dom :as dom]
+            [ajax.core :refer [GET POST PUT DELETE]]
+            [cljs.reader :refer [read-string]]))
 
- (defonce tasks (r/atom []))
- (defonce current-task (r/atom nil))
+(defonce tasks (r/atom []))
+(defonce current-task-id (r/atom nil))
 
- (defn add-task [task]
-   (swap! tasks conj task))
+(defn fetch-tasks []
+  (GET "/tasks"
+       {:handler #(reset! tasks (read-string %))
+        :error-handler #(js/console.error "Failed to fetch tasks" %)}))
 
- (defn remove-task [task]
-   (swap! tasks #(remove #(= % task) %)))
+(defn add-task [task]
+  (POST "/tasks"
+        {:params task
+         :handler #(do
+                     (swap! tasks conj (assoc task :id (random-uuid)))
+                     (js/console.log "Task added" %))
+         :error-handler #(js/console.error "Failed to add task" %)}))
 
- (defn edit-task [task updated-task]
-   (swap! tasks #(mapv (fn [t] (if (= t task) updated-task t)) %)))
+(defn remove-task [task-id]
+  (let [new-tasks (remove #(= (:id %) task-id) @tasks)]
+    (reset! tasks new-tasks)
+    (DELETE "/tasks"
+            {:params {:task task-id}
+             :handler #(js/console.log "Task removed" %)
+             :error-handler #(js/console.error "Failed to remove task" %)})))
 
- (defn task-form []
-   (let [name (r/atom "")
-         date (r/atom "")
-         assignee (r/atom "")
-         status (r/atom "ready-to-start")]
-     (fn []
-       [:div.task-form
-        [:input {:type "text" :placeholder "Task Name" :value @name :on-change #(reset! name (-> % .-target .-value))}]
-        [:input {:type "date" :value @date :on-change #(reset! date (-> % .-target .-value))}]
-        [:input {:type "text" :placeholder "Assignee" :value @assignee :on-change #(reset! assignee (-> % .-target .-value))}]
-        [:select {:value @status :on-change #(reset! status (-> % .-target .-value))}
-         [:option {:value "ready-to-start"} "Ready to start"]
-         [:option {:value "in-progress"} "In Progress"]
-         [:option {:value "waiting-for-review"} "Waiting for review"]
-         [:option {:value "pending-deploy"} "Pending Deploy"]
-         [:option {:value "done"} "Done"]
-         [:option {:value "stuck"} "Stuck"]
-         [:option {:value "blank"} "Blank"]]
-        [:button {:on-click #(add-task {:name @name :date @date :assignee @assignee :status @status})} "Add Task"]]))))
+(defn edit-task [task-id updated-task]
+  (let [update-tasks (fn [tasks]
+                       (mapv (fn [t] (if (= (:id t) task-id) (merge t updated-task) t)) tasks))]
+    (swap! tasks update-tasks)
+    (PUT "/tasks"
+         {:params {:task task-id :status (:status updated-task)}
+          :handler #(js/console.log "Task updated" %)
+          :error-handler #(js/console.error "Failed to update task" %)})))
+
+(defn task-form []
+  (let [name (r/atom "")
+        date (r/atom "")
+        assignee (r/atom "")
+        status (r/atom "ready-to-start")]
+    (fn []
+      [:div.task-form
+       [:input {:type "text" :placeholder "Task Name" :value @name :on-change #(reset! name (-> % .-target .-value))}]
+       [:input {:type "date" :value @date :on-change #(reset! date (-> % .-target .-value))}]
+       [:input {:type "text" :placeholder "Assignee" :value @assignee :on-change #(reset! assignee (-> % .-target .-value))}]
+       [:select {:value @status :on-change #(reset! status (-> % .-target .-value))}
+        [:option {:value "ready-to-start"} "Ready to start"]
+        [:option {:value "in-progress"} "In Progress"]
+        [:option {:value "waiting-for-review"} "Waiting for review"]
+        [:option {:value "pending-deploy"} "Pending Deploy"]
+        [:option {:value "done"} "Done"]
+        [:option {:value "stuck"} "Stuck"]
+        [:option {:value "blank"} "Blank"]]
+       [:button {:on-click #(add-task {:name @name :date @date :assignee @assignee :status @status})} "Add Task"]])))
 
 (defn task-item [task]
   (fn []
     [:div.task {:draggable true
-                :on-drag-start #(reset! current-task task)}
+                :on-drag-start #(do
+                                  (reset! current-task-id (:id task))
+                                  (js/console.log "Drag start" (:id task)))}
      [:div.task-title (:name task)]
      [:div.task-detail (str "Due: " (:date task))]
      [:div.task-detail (str "Assigned to: " (:assignee task))]
      [:button.edit-button {:on-click #(do
-                                        (reset! current-task task)
+                                        (reset! current-task-id (:id task))
                                         (.open (js/document.getElementById "editModal")))} "Edit"]]))
 
 (defn task-list [status]
-  (let [tasks (filter #(= (:status %) status) @tasks)]
-    [:div.tasks {:on-drag-over #(-> % .preventDefault)
-                 :on-drop #(let [task @current-task]
-                             (edit-task task (assoc task :status status))
-                             (reset! current-task nil))}
-     (for [task tasks]
-       ^{:key (:name task)}
+  (let [tasks-by-status (filter #(= (:status %) status) @tasks)]
+    [:div.tasks {:on-drag-over #(do (.preventDefault %)
+                                    (js/console.log "Drag over" status))
+                 :on-drop #(let [task-id @current-task-id]
+                             (js/console.log "Drop" status task-id)
+                             (when task-id
+                               (edit-task task-id {:status status})
+                               (reset! current-task-id nil)))}
+     (for [task tasks-by-status]
+       ^{:key (:id task)}
        [task-item task])]))
 
 (defn task-board []
@@ -101,8 +129,8 @@
          [:option {:value "stuck"} "Stuck"]
          [:option {:value "blank"} "Blank"]]
         [:button {:on-click #(do
-                               (edit-task @current-task {:name @name :date @date :assignee @assignee :status @status})
-                               (reset! current-task nil)
+                               (edit-task @current-task-id {:name @name :date @date :assignee @assignee :status @status})
+                               (reset! current-task-id nil)
                                (-> (js/document.getElementById "editModal") .close))} "Save"]]])))
 
 (defn home-page []
@@ -112,6 +140,7 @@
    [edit-modal]])
 
 (defn mount-root []
+  (fetch-tasks)
   (dom/render [home-page] (.getElementById js/document "app")))
 
 (defn init! []
