@@ -196,54 +196,80 @@
     </div>
 
     <script>
-        let currentTask = null;
-
         function createTask() {
             const taskName = document.getElementById('taskName').value;
             const taskDate = document.getElementById('taskDate').value;
             const taskAssignee = document.getElementById('taskAssignee').value;
             const taskStatus = document.getElementById('taskStatus').value;
 
-            if (taskName === '' || taskDate === '' || taskAssignee === '') {
+                // Ensure all fields are filled
+            if (!taskName || !taskDate || !taskAssignee) {
                 alert('Please fill in all fields');
-                return;
+                return; // Exit the function if validation fails
             }
 
-            const task = document.createElement('div');
-            task.classList.add('task');
-            task.setAttribute('draggable', 'true');
-            task.setAttribute('ondragstart', 'drag(event)');
-            task.setAttribute('id', `task-${Date.now()}`);
+            const task_JSON = {
+                name: taskName,
+                date: taskDate,
+                assignee: taskAssignee,
+                status: taskStatus
+            };
+            
+            fetch("http://localhost:3000/tasks", {
+            method: "POST",
+            body: JSON.stringify(task_JSON),
+            headers: {"Content-Type": "application/json"}
+        })
+        .then(response => {
+            if (!response.ok) throw new Error('Failed to add task');
+            return response.json();
+        })
+        .then(data => {
+            console.log('Success:', data);
+            alert('Task added successfully');
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert('Error adding task: ' + error.message);
+        });
+   
+            const taskElement = document.createElement('div');
+            taskElement.classList.add('task');
+            taskElement.setAttribute('draggable', 'true');
+            taskElement.setAttribute('ondragstart', 'drag(event)');
+            taskElement.setAttribute('id', `task-${task.id}`);
 
             const taskTitle = document.createElement('div');
             taskTitle.classList.add('task-title');
-            taskTitle.textContent = taskName;
+            taskTitle.textContent = task.name;
 
             const taskDetail1 = document.createElement('div');
             taskDetail1.classList.add('task-detail');
-            taskDetail1.textContent = `Due: ${taskDate}`;
+            taskDetail1.textContent = `Due: ${task.date}`;
 
             const taskDetail2 = document.createElement('div');
             taskDetail2.classList.add('task-detail');
-            taskDetail2.textContent = `Assigned to: ${taskAssignee}`;
+            taskDetail2.textContent = `Assigned to: ${task.assignee}`;
 
             const editButton = document.createElement('button');
             editButton.classList.add('edit-button');
             editButton.textContent = 'Edit';
             editButton.setAttribute('onclick', 'openEditModal(this)');
 
-            task.appendChild(taskTitle);
-            task.appendChild(taskDetail1);
-            task.appendChild(taskDetail2);
-            task.appendChild(editButton);
+            taskElement.appendChild(taskTitle);
+            taskElement.appendChild(taskDetail1);
+            taskElement.appendChild(taskDetail2);
+            taskElement.appendChild(editButton);
 
-            document.getElementById(`${taskStatus}-tasks`).appendChild(task);
-
+            document.getElementById(`${task.status}-tasks`).appendChild(taskElement);
+       
             document.getElementById('taskName').value = '';
             document.getElementById('taskDate').value = '';
             document.getElementById('taskAssignee').value = '';
             document.getElementById('taskStatus').value = 'ready-to-start';
         }
+        
+       
 
         function allowDrop(event) {
             event.preventDefault();

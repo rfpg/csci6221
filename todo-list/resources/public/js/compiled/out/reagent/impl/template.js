@@ -658,4 +658,4 @@ reagent.impl.template.set_default_compiler_BANG_ = (function reagent$impl$templa
 return (reagent.impl.template.default_compiler = compiler);
 });
 
-//# sourceMappingURL=template.js.map?rel=1718400798675
+//# sourceMappingURL=template.js.map?rel=1718454495033

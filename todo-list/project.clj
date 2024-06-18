@@ -11,6 +11,7 @@
                  [ring/ring-jetty-adapter "1.9.4"]
                  [cljsjs/react "17.0.2-0"]
                  [cljsjs/react-dom "17.0.2-0"]
+                 [com.github.seancorfield/next.jdbc "1.2.796"]
                  [org.clojure/java.jdbc "0.7.12"]
                  [org.xerial/sqlite-jdbc "3.36.0.3"]
                  [cheshire "5.10.0"]]

@@ -15,21 +15,23 @@
       [])))
 
 (defn add-task [task]
-  (db/add-task task)
-  (swap! tasks conj task)
-  (let [result (db/get-tasks)]
-    (println "Current tasks in the database:" result)))
+  (let [task-with-id (assoc task :id (str (java.util.UUID/randomUUID)))]
+    (println "Adding task:" task-with-id)
+    (db/add-task task-with-id)
+    (swap! tasks conj task-with-id)
+    (println "Current tasks:" @tasks)))
 
 (defn remove-task [id]
-  (db/delete-task id)
-  (swap! tasks (fn [ts] (remove #(= id (:id %)) ts))))
+  (jdbc/with-db-transaction [t-conn db/db-spec]
+    (jdbc/delete! t-conn :tasks ["id=?" id])
+    (swap! tasks (fn [ts] (remove #(= id (:id %)) ts)))))
 
 (defn update-task-status [id new-status]
-  (let [task (first (filter #(= id (:id %)) @tasks))]
-    (when task
-      (db/update-task (assoc task :status new-status))
+  (jdbc/with-db-transaction [t-conn db/db-spec]
+    (let [updated-task (jdbc/update! t-conn :tasks {"status" new-status} ["id=?" id])]
       (swap! tasks (fn [ts]
                      (map #(if (= id (:id %))
                              (assoc % :status new-status)
                              %)
-                          ts))))))
+                          ts)))
+      updated-task)))

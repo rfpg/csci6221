@@ -2,7 +2,7 @@
   (:require [reagent.core :as r]
             [reagent.dom :as dom]
             [todo-list.db :as db]
-            [ajax.core :refer [GET POST]]))
+            [ajax.core :refer [GET POST PUT]]))
 
 (defonce tasks (r/atom []))
 (defonce current-task (r/atom nil))
@@ -20,15 +20,36 @@
     (db/add-task task))
   (load-tasks))
 
+;(defn add-task [task]
+  ;(POST "/tasks"
+    ;{:params task
+    ; :handler (fn [response]
+              ;  (println "Task added response:" (clj->js response))
+               ; (load-tasks)) ;; Refresh tasks after successful addition
+   ;  :error-handler #(js/alert "Error adding task")}))
+
 (defn add-task [task]
-  (save-task! task))
+  (POST "/tasks"
+    {:params task
+     :format :json
+     :response-format :json
+     :handler (fn [response]
+                (println "Task added response:" response)
+                (swap! tasks conj response)  ;; Assuming `response` is the new task
+                (println "New task added, updated tasks:" @tasks))
+     :error-handler #(js/alert "Error adding face")}))
 
 (defn remove-task [task]
   (db/delete-task (:id task))
   (load-tasks))
 
 (defn edit-task [task updated-task]
-  (save-task! updated-task))
+  (PUT "/tasks"
+    {:params updated-task
+     :handler (fn [response]
+                (println "Task updated response:" response)
+                (load-tasks)) ;; Refresh tasks after successful update
+     :error-handler #(js/alert "Error updating task")}))
 
 (defn task-form []
   (let [name (r/atom "")
