@@ -119,3 +119,16 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
+
+.delete-button {
+  color: rgb(27, 131, 51);
+  background-color: red;
+  border: none;
+  padding: 5px 10px;
+  margin-left: 10px;  /* Space between edit and delete button */
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: darkred;
+}

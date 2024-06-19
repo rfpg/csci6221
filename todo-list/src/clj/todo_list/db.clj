@@ -39,10 +39,8 @@
 (defn delete-task [id]
   (try
     (jdbc/with-db-transaction [t-con db-spec]
-      (println "Deleting task from DB, ID:" id)
       (jdbc/delete! t-con :tasks ["id = ?" id])
-      (println "Task deleted successfully")
-      true)  ; Return true on successful deletion.
+      {:status "success"})
     (catch Exception e
       (println "Failed to delete task:" (.getMessage e))
-      false)))  ; Return false on failure.
+      {:status "error" :message "Failed to delete task"})))

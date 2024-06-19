@@ -22,7 +22,8 @@
     (println "Current tasks:" @tasks)))
 
 (defn remove-task [id]
-  (jdbc/with-db-transaction [t-conn db/db-spec]
+    (println "Removing task with ID:" id) ;; Log the ID 
+    (jdbc/with-db-transaction [t-conn db/db-spec]
     (jdbc/delete! t-conn :tasks ["id=?" id])
     (swap! tasks (fn [ts] (remove #(= id (:id %)) ts)))))
 

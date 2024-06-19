@@ -25,9 +25,12 @@
       (tasks/add-task task-data) ; Assuming add-task can handle the Clojure map directly
       (response/response {:status "success" :task task-data}))) ; Return some response
 
-  (DELETE "/tasks" {params :params}
-    (tasks/remove-task (:id params))
-    (response/response {:status :success}))
+ (DELETE "/tasks/:id" [id]
+   (do 
+     (println "Deleting task with ID:" id) ;; Log the ID
+     (tasks/remove-task id) 
+     (response/response {:status :success})))
+   
 
   (PUT "/tasks" {params :params}
     (let [{:keys [id status]} params]

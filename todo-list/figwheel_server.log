@@ -902,3 +902,19 @@ Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/c
   [1mNo such namespace: todo-list.db, could not locate todo_list/db.cljs, todo_list/db.cljc, or JavaScript source providing "todo-list.db" (Please check that namespaces with dashes use underscores in the ClojureScript file name) [0m
 
 [36m----  Analysis Error : Please see src/cljs/todo_list/core.cljs  ----[0m
+Notifying browser that CSS file changed: resources/public/css/style.css
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.256 seconds.[0m
+[36m----  Could not Analyze  src/cljs/todo_list/core.cljs  ----[0m
+
+  [1mNo such namespace: todo-list.db, could not locate todo_list/db.cljs, todo_list/db.cljc, or JavaScript source providing "todo-list.db" (Please check that namespaces with dashes use underscores in the ClojureScript file name) [0m
+
+[36m----  Analysis Error : Please see src/cljs/todo_list/core.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.23 seconds.[0m
+[36m----  Could not Analyze  src/cljs/todo_list/core.cljs  ----[0m
+
+  [1mNo such namespace: todo-list.db, could not locate todo_list/db.cljs, todo_list/db.cljc, or JavaScript source providing "todo-list.db" (Please check that namespaces with dashes use underscores in the ClojureScript file name) [0m
+
+[36m----  Analysis Error : Please see src/cljs/todo_list/core.cljs  ----[0m
+Notifying browser that CSS file changed: resources/public/css/style.css

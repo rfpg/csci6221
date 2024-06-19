@@ -32,7 +32,7 @@
                              (let [index (.indexOf (seesaw/items tasks-list) selected)]
                                (swap! tasks core/update-status index)
                                (core/save-tasks @tasks)
-                               (update-list tasks-list @tasks)))))]
+                               (update-list tasks-list @tasks)))))] 
 
     (update-list tasks-list @tasks)
     (seesaw/invoke-later

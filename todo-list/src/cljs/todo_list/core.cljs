@@ -20,14 +20,6 @@
     (db/add-task task))
   (load-tasks))
 
-;(defn add-task [task]
-  ;(POST "/tasks"
-    ;{:params task
-    ; :handler (fn [response]
-              ;  (println "Task added response:" (clj->js response))
-               ; (load-tasks)) ;; Refresh tasks after successful addition
-   ;  :error-handler #(js/alert "Error adding task")}))
-
 (defn add-task [task]
   (POST "/tasks"
     {:params task
@@ -73,15 +65,21 @@
 
 (defn task-item [task]
   (fn []
-    [:div.task {:draggable true
-                :on-drag-start #(reset! current-task task)
-                :id (:id task)}
+    [:div.task 
+     {:draggable true 
+      :on-drag-start #(reset! current-task task) 
+      :id (:id task)}
      [:div.task-title (:name task)]
      [:div.task-detail (str "Due: " (:date task))]
      [:div.task-detail (str "Assigned to: " (:assignee task))]
-     [:button.edit-button {:on-click #(do
-                                        (reset! current-task task)
-                                        (.open (js/document.getElementById "editModal")))} "Edit"]]))
+     [:button.edit-button 
+      {:on-click #(do 
+                    (reset! current-task task) 
+                    (.open (js/document.getElementById "editModal")))} 
+      "Edit"]
+     [:button.delete-button
+      {:on-click #(remove-task task)}
+      "Delete"]]))
 
 (defn task-list [status]
   (let [tasks (filter #(= (:status %) status) @tasks)]
