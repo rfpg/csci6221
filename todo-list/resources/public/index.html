@@ -192,7 +192,7 @@
                 <option value="blank">Blank</option>
             </select>
             <button onclick="saveTask()">Save</button>
-            <button onclick="deleteTask('${taskId}')">Delete</button>
+             <button onclick="deleteTaskFromModal()">Delete</button>
         </div>
     </div>
 
@@ -205,8 +205,9 @@
             <button onclick="closeConfirmModal()">No</button>
         </div>
     </div>
-
     <script>
+        let currentTask = null; // Global variable to store the current task being edited
+    
         function deleteTask(taskId) {
             console.log('Attempting to delete task with ID:', taskId);
             if (confirm("Are you sure you want to delete this task?")) {
@@ -235,6 +236,13 @@
                     console.error('Error deleting task:', error);
                     alert(`Error deleting task: ${error.message}`);
                 });
+            }
+        }
+    
+        function deleteTaskFromModal() {
+            if (currentTask) {
+                const taskId = currentTask.id.replace('task-', '');
+                deleteTask(taskId);
             }
         }
     
@@ -281,9 +289,9 @@
                     throw new Error('Invalid task status');
                 }
     
-                const statusElement = document.getElementById(`${taskStatus}-tasks`);
+                const statusElement = document.getElementById(`${data.status}-tasks`);
                 if (!statusElement) {
-                    throw new Error(`No element found for status: ${taskStatus}`);
+                    throw new Error(`No element found for status: ${data.status}`);
                 }
     
                 // Create the new task element
@@ -310,17 +318,10 @@
                 editButton.textContent = 'Edit';
                 editButton.setAttribute('onclick', 'openEditModal(this)');
     
-                // Create the delete button
-                const deleteButton = document.createElement('button');
-                deleteButton.classList.add('delete-button');
-                deleteButton.textContent = 'Delete';
-                deleteButton.onclick = () => deleteTask(data.id);  // Delete function call
-    
                 taskElement.appendChild(taskTitle);
                 taskElement.appendChild(taskDetail1);
                 taskElement.appendChild(taskDetail2);
                 taskElement.appendChild(editButton);
-                taskElement.appendChild(deleteButton);  // Append the delete button to the task element
     
                 statusElement.appendChild(taskElement);
             
@@ -383,12 +384,44 @@
             const taskAssignee = document.getElementById('editTaskAssignee').value;
             const taskStatus = document.getElementById('editTaskStatus').value;
     
-            currentTask.querySelector('.task-title').textContent = taskName;
-            currentTask.querySelector('.task-detail:nth-child(2)').textContent = `Due: ${taskDate}`;
-            currentTask.querySelector('.task-detail:nth-child(3)').textContent = `Assigned to: ${taskAssignee}`;
+            const taskId = currentTask.id.replace('task-', '');
     
-            document.getElementById(taskStatus + '-tasks').appendChild(currentTask);
-            closeEditModal();
+            const task_JSON = {
+                id: taskId,
+                name: taskName,
+                date: taskDate,
+                assignee: taskAssignee,
+                status: taskStatus
+            };
+    
+            fetch(`http://localhost:3000/tasks/${taskId}`, {
+                method: "PUT",
+                body: JSON.stringify(task_JSON),
+                headers: {"Content-Type": "application/json"}
+            })
+            .then(response => {
+                console.log('Response received:', response);
+                if (!response.ok) throw new Error('Failed to update task');
+                return response.json();
+            })
+            .then(data => {
+                console.log('Task updated:', data);
+                alert('Task updated successfully');
+    
+                currentTask.querySelector('.task-title').textContent = taskName;
+                currentTask.querySelector('.task-detail:nth-child(2)').textContent = `Due: ${taskDate}`;
+                currentTask.querySelector('.task-detail:nth-child(3)').textContent = `Assigned to: ${taskAssignee}`;
+    
+                // Move the task to the correct status column if changed
+                if (taskStatus !== currentTask.parentElement.id.replace('-tasks', '')) {
+                    document.getElementById(`${taskStatus}-tasks`).appendChild(currentTask);
+                }
+                closeEditModal();
+            })
+            .catch((error) => {
+                console.error('Error updating task:', error);
+                alert('Error updating task: ' + error.message);
+            });
         }
     
         function fetchTasks() {
@@ -423,25 +456,21 @@
                         editButton.textContent = 'Edit';
                         editButton.setAttribute('onclick', 'openEditModal(this)');
     
-                        // Create the delete button
-                        const deleteButton = document.createElement('button');
-                        deleteButton.classList.add('delete-button');
-                        deleteButton.textContent = 'Delete';
-                        deleteButton.onclick = () => deleteTask(task.id); // Use the task ID for deletion
-    
                         taskElement.appendChild(taskTitle);
                         taskElement.appendChild(taskDetail1);
                         taskElement.appendChild(taskDetail2);
                         taskElement.appendChild(editButton);
-                        taskElement.appendChild(deleteButton); // Append the delete button to the task element
     
                         document.getElementById(`${task.status}-tasks`).appendChild(taskElement);
                     });
                 })
                 .catch(error => console.error('Error fetching tasks:', error));
         }
+    
         window.onload = fetchTasks;
     </script>
+    
+    
     
 </body>
 </html>

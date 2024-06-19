@@ -20,24 +20,23 @@
           (response/content-type "application/json"))))
 
   (POST "/tasks" req
-    (let [task-data (:body req)] ; Extracting parsed JSON from the request body
-      (println "Received new task:" task-data) ; Log to verify the incoming data
-      (tasks/add-task task-data) ; Assuming add-task can handle the Clojure map directly
-      (response/response {:status "success" :task task-data}))) ; Return some response
-
+    (let [task-data (:body req)
+          new-task (tasks/add-task task-data)] ; Call add-task to create and return the new task
+      (println "Received new task:" task-data)
+      (response/response new-task))) ; Return the newly created task as the response
+  
  (DELETE "/tasks/:id" [id]
    (do 
      (println "Deleting task with ID:" id) ;; Log the ID
      (tasks/remove-task id) 
      (response/response {:status :success})))
    
-
-  (PUT "/tasks" {params :params}
-    (let [{:keys [id status]} params]
-      (tasks/update-task-status id status)
-      (response/response {:status :success :task (first (filter #(= id (:id %)) @tasks/tasks))}))) ; Ensure correct reference to tasks atom
-  (route/resources "/")
-  (route/not-found "Not Found"))
+(PUT "/tasks/:id" [id :as {params :body}]
+  (let [updates (dissoc params :id)]
+    (println "Updating task with ID:" id "with data:" updates)
+    (if (tasks/update-task id updates)
+      (response/response {:status :success})
+      (response/status 404 {:error "Task not found"})))))
 
 (def app
   (-> (wrap-defaults app-routes app-defaults)
