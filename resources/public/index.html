@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kanban Task Manager</title>
+  <script src="https://unpkg.com/htmx.org@2.0.0"
+    integrity="sha384-wS5l5IKJBvK6sPTKa2WZ1js3d947pvWXbPJ1OmWfEuxLgeHcEbjUUA5i9V5ZkpCw"
+    crossorigin="anonymous"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .board {
+      display: flex;
+    }
+
+    .column {
+      flex: 1;
+      padding: 10px;
+      background-color: #f0f0f0;
+      border-radius: 5px;
+      margin: 0 10px;
+    }
+
+    .column h2 {
+      text-align: center;
+    }
+
+    .task-list {
+      min-height: 6em;
+      background-color: darkgray;
+    }
+
+    .task {
+      background-color: #ffffff;
+      border: 1px solid #cccccc;
+      padding: 5px;
+      margin: 5px 0;
+      cursor: move;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="board" hx-get="/state" hx-trigger="load, every 1s" hx-swap="none">
+    <div class="column" id="todo-column">
+      <h2>Todo</h2>
+      <div id="to-do-tasks" class="task-list" ondrop="drop(event, 'to-do')" ondragover="allowDrop(event)">
+      </div>
+    </div>
+    <div class="column" id="in-progress-column">
+      <h2>In Progress</h2>
+      <div id="in-progress-tasks" class="task-list" ondrop="drop(event, 'in-progress')"
+        ondragover="allowDrop(event)"></div>
+    </div>
+    <div class="column" id="done-column">
+      <h2>Done</h2>
+      <div id="done-tasks" class="task-list" ondrop="drop(event, 'done')" ondragover="allowDrop(event)">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function allowDrop(event) {
+      event.preventDefault();
+      event.dataTransfer.dropEffect = "move";
+    }
+
+    function drag(event) {
+      event.dataTransfer.setData("text/plain", event.target.id);
+    }
+
+    function drop(event, status) {
+      event.preventDefault();
+      var data = event.dataTransfer.getData("text/plain");
+      var task = document.getElementById(data);
+      event.target.appendChild(task);
+
+      htmx.ajax("POST", `/task/${status}/${task.id}`, {swap: "none"});
+    }
+  </script>
+</body>
+
+</html>
