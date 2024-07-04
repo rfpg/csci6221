@@ -1,6 +1,5 @@
 (ns todo-list.handler
   (:require [compojure.core :refer [defroutes GET POST PUT DELETE]]
-            [compojure.route :as route]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [ring.util.response :as response]
             [ring.middleware.json :refer [wrap-json-body wrap-json-response]]
@@ -15,7 +14,7 @@
   (GET "/" [] (response/resource-response "index.html" {:root "public"}))
   (GET "/tasks" []
     (let [tasks-list (tasks/read-tasks)] ; Correct the local variable to avoid naming conflict
-      (println "Closure sucks")
+      (println "Hey Folks!!")
       (-> (response/response tasks-list)
           (response/content-type "application/json"))))
 

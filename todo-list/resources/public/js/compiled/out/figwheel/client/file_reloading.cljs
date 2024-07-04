@@ -318,7 +318,8 @@
       worker-import-script
       async-fetch-import-script)
     :worker worker-import-script
-    (fn [a b] (throw "Reload not defined for this platform"))))
+    (fn [a b] #_{:clj-kondo/ignore [:type-mismatch]}
+              (throw "Reload not defined for this platform"))))
 
 (defn reload-file [{:keys [request-url] :as file-msg} callback]
   (dev-assert (string? request-url) (not (nil? callback)))

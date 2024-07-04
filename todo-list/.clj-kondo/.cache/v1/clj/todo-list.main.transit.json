@@ -1,1 +1,1 @@
-["^ ","~$-main",["^ ","~:row",5,"~:col",1,"~:varargs-min-arity",0,"~:name","^0","~:ns","~$todo-list.main","~:top-ns","^6","~:type","~:fn"],"~:filename","/Users/maryamkhanoom/csci6221/todo-list/src/clj/todo_list/core.clj"]
+["^ ","~$-main",["^ ","~:row",5,"~:col",1,"~:fixed-arities",["~#set",[0]],"~:name","^0","~:ns","~$todo-list.main","~:top-ns","^7","~:type","~:fn"],"~:filename","/Users/maryamkhanoom/csci6221/todo-list/src/clj/todo_list/main.clj"]

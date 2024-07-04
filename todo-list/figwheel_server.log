@@ -918,3 +918,205 @@ Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/c
 
 [36m----  Analysis Error : Please see src/cljs/todo_list/core.cljs  ----[0m
 Notifying browser that CSS file changed: resources/public/css/style.css
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.132 seconds.[0m
+[36m----  Exception    ----[0m
+
+  [1mAssert failed: file:/Users/maryamkhanoom/csci6221/todo-list/src/cljs/todo_list/core.cljs does not provide a namespace
+(first provides)[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.AssertionError: Assert failed: file:/Users/maryamkhanoom/csci6221/todo-list/src/cljs/todo_list/core.cljs does not provide a namespace
+(first provides)
+ at cljs.closure$javascript_file.invokeStatic (closure.clj:498)
+    cljs.closure$javascript_file.invoke (closure.clj:494)
+    cljs.closure$map__GT_javascript_file.invokeStatic (closure.clj:503)
+    cljs.closure$map__GT_javascript_file.invoke (closure.clj:501)
+    cljs.closure$compiled_file.invokeStatic (closure.clj:590)
+    cljs.closure$compiled_file.invoke (closure.clj:582)
+    cljs.closure$compile_file.invokeStatic (closure.clj:652)
+    cljs.closure$compile_file.invoke (closure.clj:630)
+    cljs.closure$fn__5434.invokeStatic (closure.clj:726)
+    cljs.closure/fn (closure.clj:720)
+    cljs.closure$fn__5347$G__5340__5354.invoke (closure.clj:548)
+    cljs.closure$compile_sources$iter__5560__5564$fn__5565.invoke (closure.clj:1097)
+    clojure.lang.LazySeq.sval (LazySeq.java:42)
+    clojure.lang.LazySeq.seq (LazySeq.java:51)
+    clojure.lang.Cons.next (Cons.java:39)
+    clojure.lang.RT.next (RT.java:713)
+    clojure.core$next__5386.invokeStatic (core.clj:64)
+    clojure.core$dorun.invokeStatic (core.clj:3142)
+    clojure.core$doall.invokeStatic (core.clj:3148)
+    clojure.core$doall.invoke (core.clj:3148)
+    cljs.closure$compile_sources.invokeStatic (closure.clj:1093)
+    cljs.closure$compile_sources.invoke (closure.clj:1082)
+    cljs.closure$build.invokeStatic (closure.clj:3160)
+    cljs.closure$build.invoke (closure.clj:3064)
+    cljs.build.api$build.invokeStatic (api.clj:231)
+    cljs.build.api$build.invoke (api.clj:212)
+    figwheel_sidecar.components.cljs_autobuild$cljs_build.invokeStatic (cljs_autobuild.clj:28)
+    figwheel_sidecar.components.cljs_autobuild$cljs_build.invoke (cljs_autobuild.clj:27)
+    figwheel_sidecar.build_middleware.injection$hook$fn__20031.invoke (injection.clj:100)
+    figwheel_sidecar.components.cljs_autobuild$notify_command_hook$fn__20354.invoke (cljs_autobuild.clj:69)
+    figwheel_sidecar.components.cljs_autobuild$figwheel_start_and_end_messages$fn__20344.invoke (cljs_autobuild.clj:48)
+    figwheel_sidecar.build_middleware.notifications$hook$fn__20212.invoke (notifications.clj:179)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20269.invoke (clj_reloading.clj:111)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20303.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20358.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20400.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__362$fn__363.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__362.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1144)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:642)
+    java.lang.Thread.run (Thread.java:1570)
+
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.129 seconds.[0m
+[36m----  Exception    ----[0m
+
+  [1mAssert failed: file:/Users/maryamkhanoom/csci6221/todo-list/src/cljs/todo_list/core.cljs does not provide a namespace
+(first provides)[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.AssertionError: Assert failed: file:/Users/maryamkhanoom/csci6221/todo-list/src/cljs/todo_list/core.cljs does not provide a namespace
+(first provides)
+ at cljs.closure$javascript_file.invokeStatic (closure.clj:498)
+    cljs.closure$javascript_file.invoke (closure.clj:494)
+    cljs.closure$map__GT_javascript_file.invokeStatic (closure.clj:503)
+    cljs.closure$map__GT_javascript_file.invoke (closure.clj:501)
+    cljs.closure$compiled_file.invokeStatic (closure.clj:590)
+    cljs.closure$compiled_file.invoke (closure.clj:582)
+    cljs.closure$compile_file.invokeStatic (closure.clj:652)
+    cljs.closure$compile_file.invoke (closure.clj:630)
+    cljs.closure$fn__5434.invokeStatic (closure.clj:726)
+    cljs.closure/fn (closure.clj:720)
+    cljs.closure$fn__5347$G__5340__5354.invoke (closure.clj:548)
+    cljs.closure$compile_sources$iter__5560__5564$fn__5565.invoke (closure.clj:1097)
+    clojure.lang.LazySeq.sval (LazySeq.java:42)
+    clojure.lang.LazySeq.seq (LazySeq.java:51)
+    clojure.lang.Cons.next (Cons.java:39)
+    clojure.lang.RT.next (RT.java:713)
+    clojure.core$next__5386.invokeStatic (core.clj:64)
+    clojure.core$dorun.invokeStatic (core.clj:3142)
+    clojure.core$doall.invokeStatic (core.clj:3148)
+    clojure.core$doall.invoke (core.clj:3148)
+    cljs.closure$compile_sources.invokeStatic (closure.clj:1093)
+    cljs.closure$compile_sources.invoke (closure.clj:1082)
+    cljs.closure$build.invokeStatic (closure.clj:3160)
+    cljs.closure$build.invoke (closure.clj:3064)
+    cljs.build.api$build.invokeStatic (api.clj:231)
+    cljs.build.api$build.invoke (api.clj:212)
+    figwheel_sidecar.components.cljs_autobuild$cljs_build.invokeStatic (cljs_autobuild.clj:28)
+    figwheel_sidecar.components.cljs_autobuild$cljs_build.invoke (cljs_autobuild.clj:27)
+    figwheel_sidecar.build_middleware.injection$hook$fn__20031.invoke (injection.clj:100)
+    figwheel_sidecar.components.cljs_autobuild$notify_command_hook$fn__20354.invoke (cljs_autobuild.clj:69)
+    figwheel_sidecar.components.cljs_autobuild$figwheel_start_and_end_messages$fn__20344.invoke (cljs_autobuild.clj:48)
+    figwheel_sidecar.build_middleware.notifications$hook$fn__20212.invoke (notifications.clj:179)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20269.invoke (clj_reloading.clj:111)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20303.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20358.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20400.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__362$fn__363.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__362.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1144)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:642)
+    java.lang.Thread.run (Thread.java:1570)
+
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.184 seconds.[0m
+[36m----  Exception    ----[0m
+
+  [1mAssert failed: file:/Users/maryamkhanoom/csci6221/todo-list/src/cljs/core.cljs does not provide a namespace
+(first provides)[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.AssertionError: Assert failed: file:/Users/maryamkhanoom/csci6221/todo-list/src/cljs/core.cljs does not provide a namespace
+(first provides)
+ at cljs.closure$javascript_file.invokeStatic (closure.clj:498)
+    cljs.closure$javascript_file.invoke (closure.clj:494)
+    cljs.closure$map__GT_javascript_file.invokeStatic (closure.clj:503)
+    cljs.closure$map__GT_javascript_file.invoke (closure.clj:501)
+    cljs.closure$compiled_file.invokeStatic (closure.clj:590)
+    cljs.closure$compiled_file.invoke (closure.clj:582)
+    cljs.closure$compile_file.invokeStatic (closure.clj:652)
+    cljs.closure$compile_file.invoke (closure.clj:630)
+    cljs.closure$fn__5434.invokeStatic (closure.clj:726)
+    cljs.closure/fn (closure.clj:720)
+    cljs.closure$fn__5347$G__5340__5354.invoke (closure.clj:548)
+    cljs.closure$compile_sources$iter__5560__5564$fn__5565.invoke (closure.clj:1097)
+    clojure.lang.LazySeq.sval (LazySeq.java:42)
+    clojure.lang.LazySeq.seq (LazySeq.java:51)
+    clojure.lang.Cons.next (Cons.java:39)
+    clojure.lang.RT.next (RT.java:713)
+    clojure.core$next__5386.invokeStatic (core.clj:64)
+    clojure.core$dorun.invokeStatic (core.clj:3142)
+    clojure.core$doall.invokeStatic (core.clj:3148)
+    clojure.core$doall.invoke (core.clj:3148)
+    cljs.closure$compile_sources.invokeStatic (closure.clj:1093)
+    cljs.closure$compile_sources.invoke (closure.clj:1082)
+    cljs.closure$build.invokeStatic (closure.clj:3160)
+    cljs.closure$build.invoke (closure.clj:3064)
+    cljs.build.api$build.invokeStatic (api.clj:231)
+    cljs.build.api$build.invoke (api.clj:212)
+    figwheel_sidecar.components.cljs_autobuild$cljs_build.invokeStatic (cljs_autobuild.clj:28)
+    figwheel_sidecar.components.cljs_autobuild$cljs_build.invoke (cljs_autobuild.clj:27)
+    figwheel_sidecar.build_middleware.injection$hook$fn__20031.invoke (injection.clj:100)
+    figwheel_sidecar.components.cljs_autobuild$notify_command_hook$fn__20354.invoke (cljs_autobuild.clj:69)
+    figwheel_sidecar.components.cljs_autobuild$figwheel_start_and_end_messages$fn__20344.invoke (cljs_autobuild.clj:48)
+    figwheel_sidecar.build_middleware.notifications$hook$fn__20212.invoke (notifications.clj:179)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20269.invoke (clj_reloading.clj:111)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20303.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20358.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20400.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__362$fn__363.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__362.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1144)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:642)
+    java.lang.Thread.run (Thread.java:1570)
+
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 2.482 seconds.[0m
+[36m----  Could not Analyze  src/cljs/core.cljs  ----[0m
+
+  [1mNo such namespace: todo-list.db, could not locate todo_list/db.cljs, todo_list/db.cljc, or JavaScript source providing "todo-list.db" (Please check that namespaces with dashes use underscores in the ClojureScript file name) [0m
+
+[36m----  Analysis Error : Please see src/cljs/core.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.243 seconds.[0m
+[36m----  Could not Analyze  src/cljs/core.cljs  ----[0m
+
+  [1mNo such namespace: todo-list.db, could not locate todo_list/db.cljs, todo_list/db.cljc, or JavaScript source providing "todo-list.db" (Please check that namespaces with dashes use underscores in the ClojureScript file name) [0m
+
+[36m----  Analysis Error : Please see src/cljs/core.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.157 seconds.[0m
+[36m----  Could not Analyze  src/cljs/core.cljs  ----[0m
+
+  [1mNo such namespace: todo-list.db, could not locate todo_list/db.cljs, todo_list/db.cljc, or JavaScript source providing "todo-list.db" (Please check that namespaces with dashes use underscores in the ClojureScript file name) [0m
+
+[36m----  Analysis Error : Please see src/cljs/core.cljs  ----[0m
+Compiling build :dev to "resources/public/js/compiled/todo_list.js" from ["src/cljs"]...
+[31mFailed to compile build :dev from ["src/cljs"] in 0.167 seconds.[0m
+[36m----  Could not Analyze  src/cljs/core.cljs  ----[0m
+
+  [1mNo such namespace: todo-list.db, could not locate todo_list/db.cljs, todo_list/db.cljc, or JavaScript source providing "todo-list.db" (Please check that namespaces with dashes use underscores in the ClojureScript file name) [0m
+
+[36m----  Analysis Error : Please see src/cljs/core.cljs  ----[0m

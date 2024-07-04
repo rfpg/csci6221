@@ -1,5 +1,0 @@
-[{:task "Task 1" :status :backlog :due-date "2024-07-01" :people ["Alice"]}
- {:task "Task 2" :status :todoList :due-date "2024-07-02" :people ["Bob"]}
- {:task "Task 3" :status :inprocess :due-date "2024-07-03" :people ["Charlie"]}
- {:task "Task 4" :status :needReview :due-date "2024-07-04" :people ["Dave"]}
- {:task "Task 5" :status :done :due-date "2024-07-05" :people ["Eve"]}]
